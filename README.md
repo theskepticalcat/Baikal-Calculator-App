@@ -1,2 +1,3 @@
 # Calculator
-React
+React (useState, React Router)
+MobX
