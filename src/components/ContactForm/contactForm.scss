@@ -1,0 +1,35 @@
+.contact-form {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    height: 100%;
+    margin-left: 96px;
+    font-family: 'Open Sans';
+    
+
+    &__inputs {
+        align-self: center;
+        input {
+            width: 246px;
+            height: 53px;
+            margin: 0 10px 10px 0;
+
+            :active {
+                border: 1px solid #FF5D5D;
+            }
+
+            ::placeholder {
+                color: #B7B7B7;
+                font-size: 15px;
+            }
+        }
+    }
+
+    &__textarea {
+        textarea {
+            width: 502px;
+            height: 124px;
+
+            margin-top: 20px;
+        }
+    }
+}

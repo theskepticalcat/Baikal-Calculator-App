@@ -1,0 +1,58 @@
+body {
+    height: 100vh;
+    overflow: hidden;
+
+    background-color: #EFF3F9;
+}
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+a:focus { outline: none; }
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin: 0;
+}
+
+input,
+textarea,
+button {
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0px 4px 40px 0 #2e50571a;
+    outline: none;
+}
+
+
+.btn {
+
+    font-weight: 600;
+    font-size: 17px;
+    font-family: 'Open Sans';
+
+    &__whide-blue{
+        width: 262px;
+        height: 55px;
+
+        background-color: #5DAAFF;
+        color: white;
+
+        margin: 20px 0;
+
+        &:hover {
+            background-color: #2876CC;
+        }
+
+        &:disabled {
+            background-color: #aed3fa;
+        }
+    }
+}

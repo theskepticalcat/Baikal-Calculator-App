@@ -1,0 +1,25 @@
+.container{
+    position: absolute;
+    top:0;
+    right: 0;
+    height: 100vh;
+    width: 100vw;
+
+    background: url(../assets/images/Background.png) #EFF3F9 no-repeat right bottom;
+    background-size: auto;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+
+    margin-left: 97px;
+    margin-top: 107px;
+
+    h3 {
+        font-size: 48px;
+        font-weight: 400;
+        font-family: 'Open Sans', sans-serif;
+        color: #606F7A;
+    }
+}

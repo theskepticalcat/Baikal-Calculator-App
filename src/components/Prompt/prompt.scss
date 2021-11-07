@@ -1,0 +1,41 @@
+.prompt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 329px;
+    height: 55px;
+
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+
+    color: #5DAAFF;
+    background-color: white;
+
+    border-radius: 3px;
+    margin-top: 24px;
+
+    p {
+        padding-right: 18px;
+    }
+
+
+
+    &.notActive {
+        transform: scale(0);
+    }
+    &.active {
+        transform: scale(1);
+        animation: up linear 2s;
+    
+        @keyframes up{
+            0% {
+                transform: translateY(+50px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+.header {
+    height: 138px;
+    width: 100%;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-items: center;
+
+    &__logo {
+        margin-top: 46px;
+        margin-left: 97px;
+    }
+
+    &__btn {
+        margin-top: 49px;
+        margin-right: 97px;
+    }
+}
+
+.btn__white {
+        width: 132px;
+        height: 45px;
+
+        background-color: #FFFFFF;
+
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 600;
+        font-size: 17px;
+        color: #606F7A;
+
+        cursor: pointer;
+        transition: 0.2s;
+
+    &:hover {
+        background-color: #5DAAFF;
+        color: white;
+    }
+}
