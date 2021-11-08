@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Context } from '../..';
 import './miniForm.scss';
 import whiteArrow from '../../assets/images/white-arrow-right.svg';
@@ -6,10 +6,25 @@ import whiteArrow from '../../assets/images/white-arrow-right.svg';
 
 const MiniForm = () => {
     const{russianCities} = useContext(Context);
-    console.log(russianCities);
+    const{currency} = useContext(Context);
+
+    const[currentRate, setRate] = useState(currency.selectedCurrency.rate);
+    console.log(currentRate);
+
+
+    //Меняем валюту и её курс:
+    const onChangeCurrency = (e) => {
+        let currentCurrency = e.target.value;  //поменяли валюту
+
+        const newCurrency = currency.currency.filter(item =>
+            item.name === currentCurrency
+        )
+        setRate(newCurrency[0].rate);  //меняем состояние
+    };
+
 
     return (
-        <div className='wrapper'>
+        <div className='form-wrapper'>
             <div className='form-container'>
 
                 <form className='form'>
@@ -19,21 +34,27 @@ const MiniForm = () => {
 
                         <div className='form__item'>
                             <select className='form__to' name=''>
-                                {/* {russianCities.map(({id, name}) => {
+                                {russianCities.russianCities.map(city => {
                                     return (
-                                    <option className='form__option' key={id}>{name}</option>
+                                        <option className='form__option' key={city.id}>{city.name}</option>
                                     )
-                                })} */}
+                                })}
                             </select>
                         </div>
 
                         <div className='form__item'>
-                            <select className='form__usd' name=''>
-                                <option>USD</option>
+                            <select onClick={onChangeCurrency} className='form__usd' name=''>
+                                {currency.currency.map(item => {
+                                    return (
+                                        <option className='form__option' key={item.id}>{item.name}</option>
+                                    )
+                                })}
                             </select>
                         </div>
 
-                    <div className='form__rate'></div>
+                    <div className='form__rate'>
+                        <p>{currentRate}</p>
+                    </div>
                 </form>
                 
             </div>

@@ -26,11 +26,13 @@ const SelectionPage = () => {
             <div className='wrapper'>
                 <div className='selection__items'>
                     {furniture.furniture.map(item => {
-                        return (<div key={item.id} className='selection__items-item'>
+                        return (
+                        <div key={item.id} className='selection__items-item'>
                             <img src={coach} alt="диван" />
                             <p>{item.name}</p>
                             <button type='button' className='btn btn__blue btn__medium btn__white-active'>Выбрать</button>
-                        </div>)
+                        </div>
+                        )
                     })}
                 </div>
 

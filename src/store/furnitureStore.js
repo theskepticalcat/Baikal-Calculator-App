@@ -55,7 +55,7 @@ export default class FurnitureStore {
     }
 
 
-    setSelectedFurniture(furniture) {       //экшен для изменения состояния
+    setSelectedFurniture(furniture) {
         this._selectedFurniture = furniture;
     }
     get selectedFurniture() {

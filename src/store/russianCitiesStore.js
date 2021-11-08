@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 
 export default class RussianCitiesStore {
     constructor() {
-        this._russianSities = [
+        this._russianCities = [
             {
                 id: 1,
                 name: "Москва"
@@ -27,9 +27,10 @@ export default class RussianCitiesStore {
 
     
     setRussianCities(russianCities) {
-        this._russianSities = russianCities;
+        this._russianCities = russianCities;
     }
+    
     get russianCities() {
-        return this._russianSities;
+        return this._russianCities;
     }
 }

@@ -8,7 +8,7 @@ import Header from '../components/Header/Header';
 const MainPage = () => {
     const [promptActive, setPromptActive] = useState(false);
 
-    document.addEventListener('readystatechange', () => {  //если страница загрузилась => всплывает подсказка
+    document.addEventListener('readystatechange', () => {
         if(document.readyState === 'complete') {
             setInterval(() => {
             setPromptActive(true);
