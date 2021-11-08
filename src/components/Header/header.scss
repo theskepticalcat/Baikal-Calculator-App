@@ -1,21 +1,15 @@
 .header {
-    height: 138px;
     width: 100%;
     z-index: 1000;
 
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     justify-items: center;
 
-    &__logo {
-        margin-top: 46px;
-        margin-left: 97px;
-    }
-
+    &__logo,
     &__btn {
-        margin-top: 49px;
-        margin-right: 97px;
+        margin: 49px 97px 0 97px;
     }
 }
 

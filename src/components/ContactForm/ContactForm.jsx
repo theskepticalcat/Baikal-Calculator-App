@@ -61,13 +61,13 @@ const ContactForm = () => {
                     <input value={name} onChange={e => inputHandlerName(e)} type='text' placeholder='Имя и фамилия'></input>
                     <input value={mail} onChange={e => inputHandlerMail(e)} type='text' placeholder='Почта'></input>
                     <input value={phone} onChange={e => inputHandlerPhone(e)} type='tel' placeholder='Телефон'></input>
-                    <p style={{color:'red'}}>{error}</p>
                 </div>
+                <p style={{color:'red'}}>{error}</p>
 
                 <div className='contact-form__textarea'>
                     <p>Опишите ваш запрос</p>
                     <textarea></textarea>
-                    <button disabled={!formValid} className='btn btn__whide-blue' type='submit'>Связаться по доставке</button>
+                    <button disabled={!formValid} className='btn btn__whide btn__blue' type='submit'>Связаться по доставке</button>
                     <p>Нажимая на кнопку, вы даете <strong>согласие на обработку</strong><br></br>своих персональных данных</p>
                 </div>
             </form>

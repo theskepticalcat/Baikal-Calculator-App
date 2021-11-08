@@ -5,7 +5,11 @@
 }
 
 .contacts{
+    display: flex;
+    flex-direction: column;
+    
     padding-left: 97px;
+    width: auto;
     
     &__title {
         margin-top: 20px;
@@ -13,10 +17,6 @@
         font-size: 64px;
         font-family: 'Open Sans';
         font-weight: 400;
-    
-        p {
-            margin: 0;
-        }
     }
     
     &__contact {
@@ -81,6 +81,33 @@
                     margin-right: 24px;
                 }
             }
+        }
+    }
+}
+
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    
+    display: flex;
+    justify-content: flex-end;
+
+    .back-link {
+        margin: 0 97px 52px 0;
+
+        font-weight: 600;
+        font-size: 23px;
+        font-family: 'Open Sans';
+
+        color: #5DAAFF;
+        cursor: pointer;
+
+        outline: none;
+
+        img {
+            margin-right: 20px;
         }
     }
 }

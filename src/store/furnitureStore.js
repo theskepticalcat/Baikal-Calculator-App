@@ -30,6 +30,20 @@ export default class FurnitureStore {
                 price: 300,
                 netweight: 40,
                 grossweight: 50
+            },
+            {
+                id: 5,
+                name: "Шкаф, ничего не вмещается",
+                price: 300,
+                netweight: 40,
+                grossweight: 50
+            },
+            {
+                id: 6,
+                name: "Шкаф, ничего не вмещается",
+                price: 300,
+                netweight: 40,
+                grossweight: 50
             }
         ];
         this._selectedFurniture = {};

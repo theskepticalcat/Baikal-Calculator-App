@@ -1,12 +1,14 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import './../styles/contacts.scss';
-import ContactForm from './../components/ContactForm/ContactForm';
 
+import ContactForm from './../components/ContactForm/ContactForm';
 import instagram from './../assets/images/instagram.png';
 import facebook from './../assets/images/facebook.svg';
 import whatsapp from './../assets/images/whatsapp.svg';
 import wechat from './../assets/images/wechat.png';
+import backArrow from './../assets/images/blue-arrow-left.svg';
 
 
 const Contacts = () => {
@@ -14,6 +16,7 @@ const Contacts = () => {
     console.log(location);
 
     return (
+        <div>
         <div className='contacts-wrapper'>
 
             <div className='contacts'>
@@ -61,6 +64,13 @@ const Contacts = () => {
 
             <ContactForm />
 
+        </div>
+
+        <footer>
+            <Link to="/main">
+                <p className='back-link'><img src={backArrow} alt='/'/>Назад</p>
+            </Link>
+        </footer>
         </div>
     )
 }

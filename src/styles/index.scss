@@ -1,5 +1,7 @@
+html,
 body {
     height: 100vh;
+    width: 100vw;
     overflow: hidden;
 
     background-color: #EFF3F9;
@@ -20,6 +22,7 @@ a {
 
 p {
     margin: 0;
+    color: #606F7A;
 }
 
 input,
@@ -29,22 +32,46 @@ button {
     border-radius: 3px;
     box-shadow: 0px 4px 40px 0 #2e50571a;
     outline: none;
+    margin: 0;
+}
+
+input {
+    padding-left: 19px;
+
+    ::placeholder {
+        color: #B7B7B7;
+        opacity: .5;
+
+        font-size: 15px;
+        font-weight: 400;
+        font-family: 'Open Sans';
+    }
 }
 
 
-.btn {
-
+.btn{
     font-weight: 600;
     font-size: 17px;
     font-family: 'Open Sans';
 
-    &__whide-blue{
+    &__search {
+        width: 114px;
+        height: 53px;
+    }
+
+    &__whide{
         width: 262px;
         height: 55px;
+    }
 
+    &__medium {
+        width: 132px;
+        height: 45px;
+    }
+
+    &__blue{
         background-color: #5DAAFF;
         color: white;
-
         margin: 20px 0;
 
         &:hover {
@@ -53,6 +80,13 @@ button {
 
         &:disabled {
             background-color: #aed3fa;
+        }
+    }
+
+    &__white-active {
+        :active {
+            background-color: white;
+            color: #606F7A;
         }
     }
 }
