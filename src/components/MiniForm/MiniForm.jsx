@@ -1,18 +1,19 @@
 import React, { useContext, useState } from 'react';
 import { Context } from '../..';
+import { observer } from 'mobx-react-lite';
+
 import './miniForm.scss';
 import whiteArrow from '../../assets/images/white-arrow-right.svg';
 
 
-const MiniForm = () => {
+const MiniForm = observer(() => {
     const{russianCities} = useContext(Context);
     const{currency} = useContext(Context);
 
-    const[currentRate, setRate] = useState(currency.selectedCurrency.rate);
-    console.log(currentRate);
+    const[currentRate, setRate] = useState(currency.selectedCurrency.rate); //стэйт курса
 
 
-    //Меняем валюту и её курс:
+    //Выбор валюты и её курса:
     const onChangeCurrency = (e) => {
         let currentCurrency = e.target.value;  //поменяли валюту
 
@@ -62,6 +63,6 @@ const MiniForm = () => {
             <button className='nextBtn'>Далее <img src={whiteArrow} alt='/'/></button>
         </div>
     )
-}
+})
 
 export default MiniForm;

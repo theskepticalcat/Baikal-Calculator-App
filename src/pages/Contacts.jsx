@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import './../styles/contacts.scss';
 
 import ContactForm from './../components/ContactForm/ContactForm';
@@ -12,8 +12,8 @@ import backArrow from './../assets/images/blue-arrow-left.svg';
 
 
 const Contacts = () => {
-    const location = useLocation();
-    console.log(location);
+    const history = useHistory();
+    console.log(history);
 
     return (
         <div>

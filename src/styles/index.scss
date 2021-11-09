@@ -50,7 +50,7 @@ input {
 }
 
 
-.btn{
+.btn {
     font-weight: 600;
     font-size: 17px;
     font-family: 'Open Sans';
@@ -68,12 +68,22 @@ input {
     &__medium {
         width: 132px;
         height: 45px;
+
+        font-weight: 500;
+        font-family: 'Roboto';
+    }
+
+    &__submit {
+        width: 206px;
+        height: 55px;
+
+        border-radius: 5px;
     }
 
     &__blue{
         background-color: #5DAAFF;
         color: white;
-        margin: 20px 0;
+        margin: 0 9px 0 0;
 
         &:hover {
             background-color: #2876CC;
