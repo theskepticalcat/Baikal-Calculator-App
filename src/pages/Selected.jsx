@@ -48,29 +48,35 @@ const Selected = observer(() => {
 
 
             {/* Спецификации мебели */}
-            <div className='selected__specifications'>
-                <div className='selected__specifications-item'><p>Кол-во</p></div>
-                <div className='selected__specifications-item'><p>Общая масса нетто, кг</p></div>
-                <div className='selected__specifications-item'><p>Общая масса брутто, кг</p></div>
-                <div className='selected__specifications-item'><p>Общий объем, м3</p></div>
-                <div className='selected__specifications-item'><p>Стоимость единицы</p></div>
-                <div className='selected__specifications-item'><p>Удалить</p></div>
-            </div>
-
+            <table className='selected__specifications'>
+                <tr>    {/* Спецификации мебели */}
+                    <th className='empty-sell hidden'></th>
+                    <th className='empty-sell hidden'></th>
+                    <th className='description-1'><p>Кол-во</p></th>
+                    <th className='description-2'><p>Общая масса нетто, кг</p></th>
+                    <th className='description-3'><p>Общая масса брутто, кг</p></th>
+                    <th className='description-4'><p>Общий объем, м3</p></th>
+                    <th className='description-5'><p>Стоимость единицы</p></th>
+                    <th className='description-6'><p>Удалить</p></th>
+                </tr>
+            </table>
 
             {/* Выбранные элементы мебели */}
-            <div className='selected__items'>
-                <div className='selected__items-item'>
-                    <div className='item-img'><img src={sofaImg} alt='img'/></div>
-                    <div className='item-name'><p>Диван-кровать, раскладывается</p></div>
-                    <div><p>1</p></div>
-                    <div><p>23</p></div>
-                    <div><p>26</p></div>
-                    <div><p>2</p></div>
-                    <div><p>25 000 руб.</p></div>
-                    <div><img src={removeImg} alt='remove'/></div>
-                </div>
+            <div className='selected-items'>
+                <table>
+                    <tr>
+                        <td className='description-img'><img src={sofaImg} alt='img'/></td>
+                        <td><p>Диван-кровать, раскладывается</p></td>
+                        <td className='description-1'><p>1</p></td>
+                        <td className='description-2'><p>23</p></td>
+                        <td className='description-3'><p>26</p></td>
+                        <td className='description-4'><p>2</p></td>
+                        <td className='description-5'><p>25 000 руб.</p></td>
+                        <td className='description-6'><img src={removeImg} alt='remove'/></td>
+                    </tr>
+                </table>
             </div>
+
 
 
             {/* Кнопки и подсказки к ним */}

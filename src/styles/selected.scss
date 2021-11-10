@@ -56,11 +56,11 @@
 
 
 
-    &__specifications {
-        display: flex;
+    &__specifications,
+    &-items {
         align-self: flex-end;
 
-        width: 964px;
+        max-width: 964px;
         height: 80px;
 
         background-color:#F8FAFF;
@@ -71,62 +71,52 @@
         :not(:last-of-type) {
             border-right: 1px solid #E2E4EA;
         }
+    }
+    &-items {
+        height: 97px;
+        max-width: 1246px;
+    }
 
-        &-item {
-            display: flex;
-            flex-grow: 1;
-            align-items: center;
-            justify-content: center;
 
+    table {
+
+        .hidden {
+            display: none;
+        }
+
+        td,
+        th {
             font-family: 'Open Sans';
             font-weight: 600;
             font-size: 14px;
+            padding: 0 15px;
+        }
+
+        .description-img {
+            padding: 0;
+        }
+
+        .description-1 {
+            min-width: 105px;
+        }
+        .description-2 {
+            min-width: 190px;
+        }
+        .description-3 {
+            min-width: 197px;
+        }
+        .description-4 {
+            min-width: 165px;
+        }
+        .description-5 {
+            min-width: 179px;
+        }
+        .description-6 {
+            min-width: 128px;
         }
     }
 
 
-
-    &__items {
-        max-width: 100%;
-        height: auto;
-
-        &-item {
-            width: 100%;
-            height: 99px;
-
-            background-color: #F8FAFF;
-            border: 1px solid #E2E4EA;
-
-            display: flex;
-            align-items: center;
-
-            font-family: 'Open Sans';
-            font-weight: 600;
-            font-size: 14px;
-
-            :not(:last-of-type) {
-                border-right: 1px solid #E2E4EA;
-            }
-
-            .item-img {
-                width: 120px;
-                flex-grow: 1;
-            }
-            .item-name {
-                min-width: 150px;
-                flex-grow: 1;
-            }
-
-            div {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                flex-grow: 30;
-                height: 100%;
-            }
-        }
-    }
 
 
     &__footer {
