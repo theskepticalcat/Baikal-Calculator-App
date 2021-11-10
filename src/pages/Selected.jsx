@@ -1,4 +1,7 @@
 import React, { useContext } from 'react';
+import { Context } from '..';
+import { observer } from 'mobx-react-lite';
+
 import closeImg from './../assets/images/red-close.svg';
 import sofaImg from './../assets/images/coach.png';
 import removeImg from './../assets/images/red-big-delete.svg';
@@ -7,12 +10,11 @@ import arrowRightImg from './../assets/images/blue-arrow-right.svg';
 
 import './../styles/selected.scss';
 import './../styles/index.scss';
-import { Context } from '..';
-import { observer } from 'mobx-react-lite';
 
 
 const Selected = observer(() => {
     const {furniture} = useContext(Context);
+    console.log(furniture.selectedFurniture);
 
 
     //Обработчики для подсказок:
@@ -49,7 +51,7 @@ const Selected = observer(() => {
 
             {/* Спецификации мебели */}
             <table className='selected__specifications'>
-                <tr>    {/* Спецификации мебели */}
+                <tr>
                     <th className='empty-sell hidden'></th>
                     <th className='empty-sell hidden'></th>
                     <th className='description-1'><p>Кол-во</p></th>
@@ -61,21 +63,22 @@ const Selected = observer(() => {
                 </tr>
             </table>
 
+
             {/* Выбранные элементы мебели */}
             <div className='selected-items'>
-                <table>
-                    <tr>
-                        <td className='description-img'><img src={sofaImg} alt='img'/></td>
-                        <td><p>Диван-кровать, раскладывается</p></td>
-                        <td className='description-1'><p>1</p></td>
-                        <td className='description-2'><p>23</p></td>
-                        <td className='description-3'><p>26</p></td>
-                        <td className='description-4'><p>2</p></td>
-                        <td className='description-5'><p>25 000 руб.</p></td>
-                        <td className='description-6'><img src={removeImg} alt='remove'/></td>
-                    </tr>
-                </table>
-            </div>
+                    <table>
+                        <tr>
+                            <td className='description-img'><img src={sofaImg} alt='img'/></td>
+                            <td><p>Название</p></td>
+                            <td className='description-1'><p>1</p></td>
+                            <td className='description-2'><p>23</p></td>
+                            <td className='description-3'><p>26</p></td>
+                            <td className='description-4'><p>2</p></td>
+                            <td className='description-5'><p>25 000 руб.</p></td>
+                            <td className='description-6'><img src={removeImg} alt='remove'/></td>
+                        </tr>
+                    </table>
+                </div>
 
 
 

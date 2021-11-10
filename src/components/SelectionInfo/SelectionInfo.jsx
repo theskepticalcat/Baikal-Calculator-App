@@ -5,27 +5,21 @@ import { observer } from 'mobx-react-lite';
 import './selectionInfo.scss';
 import './../../styles/index.scss';
 
-import selectedItem from './../../assets/images/coach.png';
+import selectedItemImg from './../../assets/images/coach.png';
 import add from './../../assets/images/blue-add.svg';
 import reduce from './../../assets/images/blue-reduce.svg';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 
-const SelectionInfo = observer((item) => {
+const SelectionInfo = observer(({selectedItem}) => {
     const {furniture} = useContext(Context);
-    const [isSelected, setSelected] = useState(item);   //стэйт отображения выбранного айтема мебели
-
-    
-    const newSelectedItem = furniture.furniture.filter(i =>     //нашли айтем, имя в котором = выбранному айтему
-        i.name === item.selectedItem
-    )
-    console.log(newSelectedItem[0]);    //вытащили первый эл-нт, в кот. об-кт целиком с выбранным именем
-    //а теперь его надо куда-то дальше передать, чтобы отобразить на странице с выбранными товарами
+    const [isSelected, setSelected] = useState(selectedItem);   //стэйт отображения выбранного айтема мебели
 
 
     return (
         <div>
-        {isSelected === item
+        {isSelected === selectedItem
             ? 
             <div className='info__empty'>
                 <p>Вы не выбрали пока ни одного элемента.</p>
@@ -33,8 +27,8 @@ const SelectionInfo = observer((item) => {
             :
             <div className='info'>
                 <div className='info__selected-item'>
-                    <img src={selectedItem} alt='/' />
-                    <p>{item.selectedItem}</p>
+                    <img src={selectedItemImg} alt='/' />
+                    <p>{selectedItem.name}</p>
                 </div>
 
 
@@ -56,7 +50,9 @@ const SelectionInfo = observer((item) => {
 
                 <form>
                     <button className='btn btn__blue btn__submit'>Сбросить</button>
-                    <button className='btn btn__blue btn__submit'>Добавить</button>
+                    <Link to="/selected">
+                        <button onClick={e => e.preventDefault} className='btn btn__blue btn__submit'>Добавить</button>
+                    </Link>
                 </form>
             </div>
         }

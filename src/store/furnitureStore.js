@@ -46,12 +46,21 @@ export default class FurnitureStore {
                 grossweight: 50
             }
         ];
-        this._selectedFurniture = {};
+        this._selectedItem = {};
+        this._selectedFurniture = [];
         makeAutoObservable(this);
     }
 
     get furniture() {
         return this._furniture;
+    }
+
+
+    setselectedItem(item) {
+        this._selectedItem = item;
+    }
+    get setselectedItem() {
+        return this._setselectedItem;
     }
 
 

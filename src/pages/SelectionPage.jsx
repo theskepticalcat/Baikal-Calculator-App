@@ -12,11 +12,12 @@ import { observer } from 'mobx-react-lite';
 const SelectionPage = observer(() => {
     const {furniture} = useContext(Context);
     const [selectedItem, setSelectedItem] = useState('');
+    console.log(selectedItem);
 
 
-    const selectItemHandler = (item) => {
-        const itemName = item.querySelector('.item_name').innerHTML;  //вытащили название мебели
-        setSelectedItem(itemName);
+    const select = (item) => {
+        setSelectedItem(item);      //добавляем выбранный айтем в стейт
+        furniture.setSelectedFurniture(item);     //добавляем выбранный айтем в глобальное хранилище
     }
 
 
@@ -42,7 +43,7 @@ const SelectionPage = observer(() => {
                         <div key={item.id} className='selection__items-item'>
                             <img src={coach} alt="диван" />
                             <p className='item_name'>{item.name}</p>
-                            <button onClick={item => selectItemHandler(item.currentTarget.parentNode)} type='button' className='btn btn__blue btn__medium btn__white-active'>Выбрать</button>
+                            <button onClick={() => select(item)} type='button' className='btn btn__blue btn__medium btn__white-active'>Выбрать</button>
                         </div>
                         )
                     })}

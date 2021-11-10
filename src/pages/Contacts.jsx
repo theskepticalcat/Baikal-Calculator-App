@@ -1,6 +1,5 @@
-import React from 'react'
-import { useLocation } from 'react-router-dom';
-import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import React from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import './../styles/contacts.scss';
 
 import ContactForm from './../components/ContactForm/ContactForm';
@@ -13,7 +12,6 @@ import backArrow from './../assets/images/blue-arrow-left.svg';
 
 const Contacts = () => {
     const history = useHistory();
-    console.log(history);
 
     return (
         <div>
@@ -67,9 +65,7 @@ const Contacts = () => {
         </div>
 
         <footer>
-            <Link to="/main">
-                <p className='back-link'><img src={backArrow} alt='/'/>Назад</p>
-            </Link>
+            <p onClick={() => history.goBack()} className='back-link'><img src={backArrow} alt='/'/>Назад</p>
         </footer>
         </div>
     )

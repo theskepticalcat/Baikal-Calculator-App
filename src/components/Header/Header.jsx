@@ -6,9 +6,11 @@ import { Link } from 'react-router-dom';
 function Header() {
     return (
         <div className='header'>
-            <div className='header__logo'>
-                <img src={logo} alt="Baikal" />
-            </div>
+            <Link to="/main">
+                <div className='header__logo'>
+                    <img src={logo} alt="Baikal" />
+                </div>
+            </Link>
 
             <div className='header__btn'>
                 <Link to="/contacts">
