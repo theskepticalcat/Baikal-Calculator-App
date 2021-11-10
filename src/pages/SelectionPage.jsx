@@ -16,7 +16,7 @@ const SelectionPage = observer(() => {
 
 
     const select = (item) => {
-        setSelectedItem(item);      //добавляем выбранный айтем в стейт
+        setSelectedItem(item);      //добавляем выбранный айтем в стейт для отображения
         furniture.setSelectedFurniture(item);     //добавляем выбранный айтем в глобальное хранилище
     }
 

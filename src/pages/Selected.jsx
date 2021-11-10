@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Context } from '..';
 import { observer } from 'mobx-react-lite';
+import { useHistory } from 'react-router-dom';
 
 import closeImg from './../assets/images/red-close.svg';
 import sofaImg from './../assets/images/coach.png';
@@ -14,7 +15,9 @@ import './../styles/index.scss';
 
 const Selected = observer(() => {
     const {furniture} = useContext(Context);
-    console.log(furniture.selectedFurniture);
+    const history = useHistory();
+
+    console.log(furniture.selectedFurniture.length);
 
 
     //Обработчики для подсказок:
@@ -66,19 +69,21 @@ const Selected = observer(() => {
 
             {/* Выбранные элементы мебели */}
             <div className='selected-items'>
+                {furniture.selectedFurniture.map(item => 
                     <table>
                         <tr>
                             <td className='description-img'><img src={sofaImg} alt='img'/></td>
-                            <td><p>Название</p></td>
+                            <td className='description-name'><p>{item.name}</p></td>
                             <td className='description-1'><p>1</p></td>
                             <td className='description-2'><p>23</p></td>
                             <td className='description-3'><p>26</p></td>
                             <td className='description-4'><p>2</p></td>
-                            <td className='description-5'><p>25 000 руб.</p></td>
+                            <td className='description-5'><p>{item.price} руб.</p></td>
                             <td className='description-6'><img src={removeImg} alt='remove'/></td>
                         </tr>
                     </table>
-                </div>
+                )}
+            </div>
 
 
 
@@ -97,7 +102,7 @@ const Selected = observer(() => {
                         <img src={arrowRightImg} alt='/'/>
                     </div>
 
-                    <button type='submit' className='btn btn__blue btn__submit'>Добавить</button>
+                    <button onClick={() => history.push('/select')} type='submit' className='btn btn__blue btn__submit'>Добавить</button>
                     <button type='submit' className='btn btn__blue btn__submit'>Рассчитать</button>
                 </div>
             </div>

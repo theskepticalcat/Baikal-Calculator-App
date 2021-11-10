@@ -1,5 +1,4 @@
-import React, { useContext, useState } from 'react';
-import { Context } from '../..';
+import React, { useState } from 'react';
 import { observer } from 'mobx-react-lite';
 
 import './selectionInfo.scss';
@@ -13,7 +12,6 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 const SelectionInfo = observer(({selectedItem}) => {
-    const {furniture} = useContext(Context);
     const [isSelected, setSelected] = useState(selectedItem);   //стэйт отображения выбранного айтема мебели
 
 
@@ -43,7 +41,7 @@ const SelectionInfo = observer(({selectedItem}) => {
 
                 <div className='info__specifications'>
                     <div className='info__specifications-item'><p>25 м3</p></div>
-                    <div className='info__specifications-item'><p className='info__placeholder'>Общая масса нетто, кг</p></div>
+                    <div className='info__specifications-item'><p className='info__placeholder' placeholder='Общая масса нетто, кг'></p></div>
                     <div className='info__specifications-item'><p className='info__placeholder'>Общая масса брутто, кг</p></div>
                     <div className='info__specifications-item'><p className='info__placeholder'>Стоимость одной единицы</p></div>
                 </div>
