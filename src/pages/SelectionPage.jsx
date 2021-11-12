@@ -36,7 +36,7 @@ const SelectionPage = observer(() => {
 
 
             {/* Вывод всей мебели */}
-            <div className='wrapper'>
+            <div className='selection__wrap'>
                 <div className='selection__items'>
                     {furniture.furniture.map(item => {
                         return (

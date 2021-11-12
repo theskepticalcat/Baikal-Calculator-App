@@ -1,25 +1,39 @@
-.container{
-    position: absolute;
-    top:0;
-    right: 0;
+@import './mixin.scss';
+@import './vars.scss';
+
+.main-page {
+    display: flex;
+    align-items: center;
+
+    background: url(../assets/images/Background.png) #EFF3F9 no-repeat right bottom;
     height: 100vh;
     width: 100vw;
 
-    background: url(../assets/images/Background.png) #EFF3F9 no-repeat right bottom;
-    background-size: auto;
-}
 
-.main {
-    display: flex;
-    flex-direction: column;
+    &__mini-form {
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+        margin: auto 97px;
+    
+        h3 {
+            font-size: 4.7rem;
+            font-weight: 400;
+            font-family: 'Open Sans';
+            color: #606F7A;
+    
+            @include breakpoint($tablet-bp) {
+                font-size: 3rem;
+                font-weight: 300;
+                max-width: 335px;
+            }
+        }
+    }
 
-    margin-left: 97px;
-    margin-top: 107px;
-
-    h3 {
-        font-size: 48px;
-        font-weight: 400;
-        font-family: 'Open Sans', sans-serif;
-        color: #606F7A;
+    @include breakpoint($tablet-bp) {
+        background: #EFF3F9;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
     }
 }

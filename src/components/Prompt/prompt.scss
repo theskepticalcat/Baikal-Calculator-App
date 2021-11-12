@@ -1,3 +1,6 @@
+@import './../../styles/mixin.scss';
+@import './../../styles/vars.scss';
+
 .prompt {
     display: flex;
     align-items: center;
@@ -37,5 +40,9 @@
                 transform: translateY(0);
             }
         }
+    }
+
+    @include breakpoint($tablet-bp) {
+        display: none;
     }
 }

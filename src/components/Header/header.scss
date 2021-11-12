@@ -1,4 +1,9 @@
+@import './../../styles/mixin.scss';
+@import './../../styles/vars.scss';
+
 .header {
+    position: absolute;
+    top: 0;
     width: 100%;
     z-index: 1000;
 
@@ -7,28 +12,46 @@
     align-items: flex-end;
     justify-items: center;
 
-    &__logo,
+    padding: 49px 97px 0 97px;
+
+
     &__btn {
-        margin: 49px 97px 0 97px;
+        @include breakpoint($tablet-bp) {
+            padding: 10px;
+        }
+
+        &--burger {
+            display: none;
+    
+            @include breakpoint($tablet-bp) {
+                display: inline-block;
+            }
+        }
     }
-}
 
-.btn__white {
-        width: 132px;
+    @include breakpoint($tablet-bp) {
+        padding: 24px 20px;
+    }
+
+    .btn__white {
+        width: 7.7em;
         height: 45px;
-
-        background-color: #FFFFFF;
-
-        font-family: 'Open Sans', sans-serif;
-        font-weight: 600;
-        font-size: 17px;
+    
+        background-color: white;
+        font-family: 'Open Sans';
         color: #606F7A;
-
+        font-size: 1.5rem;
+    
         cursor: pointer;
         transition: 0.2s;
-
-    &:hover {
-        background-color: #5DAAFF;
-        color: white;
+    
+        &:hover {
+            background-color: #5DAAFF;
+            color: white;
+        }
+    
+        @include breakpoint($tablet-bp) {
+            display: none;
+        }
     }
 }

@@ -1,8 +1,9 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import './../styles/contacts.scss';
 
 import ContactForm from './../components/ContactForm/ContactForm';
+import './../styles/contacts.scss';
+
 import instagram from './../assets/images/instagram.png';
 import facebook from './../assets/images/facebook.svg';
 import whatsapp from './../assets/images/whatsapp.svg';
@@ -14,7 +15,7 @@ const Contacts = () => {
     const history = useHistory();
 
     return (
-        <div>
+    <div className='page-wrapper'>
         <div className='contacts-wrapper'>
 
             <div className='contacts'>
@@ -60,14 +61,34 @@ const Contacts = () => {
                 </div>
             </div>
 
+
             <ContactForm />
+
+
+            <div>
+                <div className='contacts-modal'>
+                    <div className='contacts-modal__mail'><p>asia@baikalvl.ru</p></div>
+                    <div className='contacts-modal__tel'><a href='tel: 88002018777'><p>8 800 201-87-77</p></a></div>
+                    <div><button className='contacts-modal__btn'>Связаться</button></div>
+                </div>
+
+                <div className='contacts-modal__footer'>
+                    <p>Мы в соц. сетях:</p>
+                    <div>
+                        <img src={instagram} alt="instagram" />
+                        <img src={whatsapp} alt="whatsapp" />
+                        <img src={facebook} alt="facebook" />
+                        <img src={wechat} alt="wechat" />
+                    </div>
+                </div>
+            </div>
 
         </div>
 
         <footer>
             <p onClick={() => history.goBack()} className='back-link'><img src={backArrow} alt='/'/>Назад</p>
         </footer>
-        </div>
+    </div>
     )
 }
 

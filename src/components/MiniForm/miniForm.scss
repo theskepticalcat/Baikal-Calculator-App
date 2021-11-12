@@ -1,112 +1,150 @@
-.form-wrapper {
-    display: flex;
-}
+@import './../../styles/mixin.scss';
+@import './../../styles/vars.scss';
+
 
 .form-container {
-    width: 524px;
-    height: 67px;
-
-    background-color: white;
-    box-shadow: 0px 4px 40px 0 #2e50571a;
-    border-radius: 3px;
-
     display: flex;
-    align-items: center;
+    flex-direction: row;
     
-
     .form {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
 
-        height: 47px;
-        width: 100%;
+            &__item {
+                position: relative;
 
-        &__from {
-            max-width: 90%;
-            padding-left: 20px;
-            margin-right: 0;
-        }
-        &__item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                width: 135px;
 
-            border-right: 1px solid #DEDEDE;
-            cursor: pointer;
-        }
+                border-right: 1px solid #DEDEDE;
+                background-color: white;
+                cursor: pointer;
 
-        &__from,
-        &__to,
-        &__usd {
-            display: flex;
-            height: 50px;
-            border: none;
-            padding: 0;
-            margin-right: 10px;
+                img {
+                    margin-left: 10px;
+                }
 
-            font-family: 'Roboto';
-            font-size: 15px;
+                &--from,
+                &--to,
+                &--usd,
+                &--rate {
+                    display: flex;
+                    width: 100%;
+                    border: none;
 
-            width: 100%;
-            align-self: flex-start;
+                    align-items: center;
+                    justify-content: center;
 
-            &:focus {
-                outline: none;
+                    font-family: 'Roboto';
+                    font-size: 15px;
+                    align-self: flex-start;
+
+
+                    &__results {
+                        position: absolute;
+                        top: 67px;
+                    
+                        align-items: center;
+                        width: 100%;
+                        z-index: 100;
+
+                        .hidden {
+                            display: none;
+                        }
+                    
+                        li {
+                            padding: 20px;
+                            height: 67px;
+                            cursor: pointer;
+
+                            border-bottom: 1px solid #DEDEDE;
+                            border-top: 1px solid #DEDEDE;
+                            border-radius: 0 0 3px 3px;
+                            background-color: white;
+                            max-height: 200px;
+                            width: 100.5%;
+                            margin: 0;
+                            overflow: scroll;
+
+                            &::-webkit-scrollbar {
+                                display: none;
+                            }
+
+                    
+                            :not(:last-of-type) {
+                                border-bottom: 1px solid #DEDEDE;
+                            }
+
+                            @include breakpoint($tablet-bp) {
+                                height: 49px;
+                                width: 100%;
+                            }
+                        }
+
+                        @include breakpoint($tablet-bp) {
+                            top: 46px;
+                        }
+                    }
+                }
+                &--rate {
+                    height: 100%;
+                    p {
+                        color: #B7B7B7;
+                    }
+                }
+
+                @include breakpoint($tablet-bp) {
+                    padding: 47px auto;
+                    border: none;
+                    border-radius: 5px;
+
+                    width: 162px;
+                    height: 49px;
+                }
             }
-        }
 
-        &__option {
-            width: 135px;
+
+        &__nextBtn {
+            margin-left: 12px;
+            width: 163px;
             height: 67px;
-        }
-
-        &__rate {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 15px;
-
-            p {
-                color: #B7B7B7;
-                font-family: 'Roboto';
-                font-weight: 500;
-                font-size: 15px;
+        
+            background-color: #5DAAFF;
+            color: white;
+        
+            font-family: 'Roboto';
+            font-size: 17px;
+            font-weight: 500;
+        
+            cursor: pointer;
+        
+            &:hover {
+                background-color: #2876CC;
+                color: white;
+            }
+        
+            @include breakpoint($tablet-bp) {
+                width: 335px;
+                height: 55px;
+        
+                margin: 24px auto;
             }
         }
 
-
-        select {
-            position: relative;
-
-            display: flex;
-            justify-self: center;
-            text-align: center;
-
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-
-            background: url(../../assets/images/smallArrowDown.svg) no-repeat right center;
+        @include breakpoint($tablet-bp) {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            grid-gap: 20px 10px;
         }
     }
-}
 
-.nextBtn {
-    margin-left: 12px;
-    width: 163px;
-    height: 67px;
-
-    background-color: #5DAAFF;
-    color: white;
-
-    font-family: 'Roboto';
-    font-size: 17px;
-    font-weight: 500;
-
-    cursor: pointer;
-
-    &:hover {
-        background-color: #2876CC;
-        color: white;
+    @include breakpoint($tablet-bp) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 335px;
     }
 }

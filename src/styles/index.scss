@@ -1,10 +1,16 @@
-html,
+@import './mixin.scss';
+@import './vars.scss';
+
+
+html {
+    font-size: 62.5%;
+}
 body {
-    height: 100vh;
-    width: 100vw;
     overflow: hidden;
 
-    background-color: #EFF3F9;
+    background-color: $light-blue;
+    font-size: 1.4rem;
+    margin: 0;
 }
 
 
@@ -22,9 +28,10 @@ a {
 
 p {
     margin: 0;
-    color: #606F7A;
+    color: $grey;
 }
 
+//Эл-ты формы:
 input,
 textarea,
 button {
@@ -36,11 +43,10 @@ button {
 }
 
 input {
-    padding-left: 19px;
     box-shadow: none;
 
     ::placeholder {
-        color: #B7B7B7;
+        color: $light-grey;
         opacity: .5;
 
         font-size: 15px;
@@ -50,19 +56,23 @@ input {
 }
 
 
+//Списки:
+ul, 
+li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+//Стили кнопок:
 .btn {
     font-weight: 600;
-    font-size: 17px;
+    font-size: 1.2rem;
     font-family: 'Open Sans';
 
     &__search {
         width: 114px;
         height: 53px;
-    }
-
-    &__whide{
-        width: 262px;
-        height: 55px;
     }
 
     &__medium {
@@ -81,16 +91,28 @@ input {
     }
 
     &__blue{
-        background-color: #5DAAFF;
+        background-color: $blue;
         color: white;
         margin: 0 9px 0 0;
 
         &:hover {
-            background-color: #2876CC;
+            background-color: $dark-blue;
         }
 
         &:disabled {
-            background-color: #aed3fa;
+            background-color: $light-blue;
+        }
+    }
+
+    &__whide{
+        width: 262px;
+        height: 55px;
+        margin: 20px 0;
+
+        @include breakpoint($desktop-bp) {
+            width: 220px;
+            height: 40px;
+            margin: 10px 0;
         }
     }
 
@@ -100,4 +122,20 @@ input {
             color: #606F7A;
         }
     }
+
+    @include breakpoint($desktop-bp) {
+        font-size: 1rem;
+    }
+}
+
+//Обёртка для страниц:
+.page-wrapper {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
