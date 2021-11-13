@@ -18,10 +18,11 @@ const MiniForm = observer(() => {
     const [promptActive, setPromptActive] = useState(false);    //состояние подсказки
 
     const [currentCurrency, setCurrentCurrency] = useState(currency.selectedCurrency.name);
-    const[currentRate, setRate] = useState(currency.selectedCurrency.rate);     //стэйт курса валют
-    const[currentRussianCity, setRussianCity] = useState(russianCities.russianCities[0].name);       //стэйт для русского города
+    const [currentRate, setRate] = useState(currency.selectedCurrency.rate);     //стэйт курса валют
+    const [currentRussianCity, setRussianCity] = useState(russianCities.russianCities[0].name);       //стэйт для русского города
     const [currentValue, setValue] = useState('');      //стэйт инпута с выбором китайского города
-    (console.log(currentValue));
+
+
 
     //Появление подсказки:
     useEffect(() => {
@@ -77,16 +78,38 @@ const MiniForm = observer(() => {
     }
 
 
+
     //Выбор валюты и её курса:
     const onChangeCurrency = (e) => {
         setPromptActive(false);
-        let currentCurrency = e.target.value;
 
-        const newCurrency = currency.currency.filter(item =>
-            item.name === currentCurrency
-        )
-        setRate(newCurrency[0].rate);  //меняем состояние
-    };
+        const selectUsd = document.getElementById('form__item--usd');
+        const selectUsd_title = selectUsd.querySelector('.form__item--select__title');
+        const selectUsd_items = selectUsd.querySelectorAll('.select-item');
+
+        //Выпадающее меню:
+        selectUsd_title.addEventListener('click', () => {
+            if ('active' === selectUsd.getAttribute('data-state')) {
+                selectUsd.setAttribute('data-state', '');
+            } else {
+                selectUsd.setAttribute('data-state', 'active');
+            }
+        })
+
+        //Закрываем по клику на опцию и сохраняем в стейт:
+        for (let i = 0; i < selectUsd_items.length; i++) {
+            selectUsd_items[i].addEventListener('click', (e) => {
+                selectUsd_title.textContent = e.currentTarget.textContent;
+                selectUsd.setAttribute('data-state', '');
+
+                setCurrentCurrency(e.currentTarget.textContent);
+            })
+        }
+
+        //Меняем курс валюты:
+        const onSelectRate = currency.currency.filter(item => item.name === currentCurrency);
+        setRate(onSelectRate[0].rate);
+    }
 
 
 
@@ -101,6 +124,7 @@ const MiniForm = observer(() => {
                         <div className='form__item--from__results' id='results'></div>
                     </div>
 
+
                     {/**Куда: */}
                     <div className='form__item'>
                         <select onClick={e => onChangeCity(e)} className='form__item--to'>
@@ -114,18 +138,25 @@ const MiniForm = observer(() => {
                         </select>
                     </div>
 
+
                     {/**Валюта: */}
-                    <div className='form__item'>
-                        <select onClick={e => onChangeCurrency(e)} className='form__item--usd'>
-                            <p>{currentCurrency}</p>
-                            <img src={smallArrowDownSvg} alt="выбрать" />
+                    <div onClick={e => onChangeCurrency(e)} className='form__item' id='form__item--usd' data-state=''>
+                        <div className='form__item--select__title'>  {/**главный блок с названием*/}
+                            {currentCurrency}
+                        </div>
+
+                       <div className='form__item--select__content'>
                             {currency.currency.map(item => {
                                 return (
-                                    <option className='form__item--to__results' key={item.id}>{item.name}</option>
+                                    <div className='select-item' key={item.id}>
+                                        <input id="select0" className='select__input' type="radio"/>
+                                        <label htmlFor="select0" className='select__label'>{item.name}</label>
+                                    </div>
                                 )
                             })}
-                        </select>
+                       </div>
                     </div>
+
 
                     {/**Курс: */}
                     <div className='form__item form__item--rate'>
@@ -135,6 +166,7 @@ const MiniForm = observer(() => {
 
                 <button className='form__nextBtn'>Далее <img src={whiteArrow} alt='/'/></button>
             </div>
+
 
             <Prompt active={promptActive} setActive={setPromptActive}/>
         </div>
