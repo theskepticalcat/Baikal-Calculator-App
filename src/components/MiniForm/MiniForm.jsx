@@ -37,7 +37,6 @@ const MiniForm = observer(() => {
     function showChineseResults(value) {    //получаем ввод из инпута
         const selectChinaCity = document.getElementById('form__item--from');
         const selectChinaCity_title = selectChinaCity.querySelector('.form__item--select__title');
-        const selectChinaCity_items = selectChinaCity.querySelectorAll('.select-item');
         
         setChineseCity(value);
         setPromptActive(false);
@@ -65,7 +64,7 @@ const MiniForm = observer(() => {
         //Рисуем эл-ты:
         for (let i = 0; i < shownItems.length; i++) {
             const option = `<div class="select-item">
-                <input type='radio' class="select-input" id='city-name'></input>
+                <input type='radio' class='select__input' id='city-name'></input>
                 <label for='city-name' className='select__label'>${shownItems[i]}</label>
             </div>`
             list += option;
@@ -78,12 +77,13 @@ const MiniForm = observer(() => {
         }
 
         //Закрываем по клику на опцию и сохраняем в стейт:
+        const selectChinaCity_items = selectChinaCity.querySelectorAll('.select-item');
         for (let i = 0; i < selectChinaCity_items.length; i++) {
             selectChinaCity_items[i].addEventListener('click', (e) => {
                 selectChinaCity_title.textContent = e.currentTarget.textContent;
                 selectChinaCity.setAttribute('data-state', '');
 
-                setRussianCity(e.currentTarget.textContent);    //записываем в стейт
+                setChineseCity(e.target.textContent.trim());    //записываем в стейт
             })
         }
     }
@@ -101,11 +101,7 @@ const MiniForm = observer(() => {
 
         //Выпадающее меню:
         selecRusCity_title.addEventListener('click', () => {
-            if ('active' === selecRusCity.getAttribute('data-state')) {
-                selecRusCity.setAttribute('data-state', '');
-            } else {
-                selecRusCity.setAttribute('data-state', 'active');
-            }
+            selecRusCity.setAttribute('data-state', 'active');
         })
 
         //Закрываем по клику на опцию и сохраняем в стейт:
@@ -131,12 +127,9 @@ const MiniForm = observer(() => {
 
         //Выпадающее меню:
         selectUsd_title.addEventListener('click', () => {
-            if ('active' === selectUsd.getAttribute('data-state')) {
-                selectUsd.setAttribute('data-state', '');
-            } else {
                 selectUsd.setAttribute('data-state', 'active');
-            }
         })
+
         //Закрываем по клику на опцию и сохраняем в стейт:
         for (let i = 0; i < selectUsd_items.length; i++) {
             selectUsd_items[i].addEventListener('click', (e) => {
@@ -214,7 +207,7 @@ const MiniForm = observer(() => {
                     </div>
                 </form>
 
-                <button className='form__nextBtn'>Далее <img src={whiteArrow} alt='/'/></button>
+                <button type='submit' className='form__nextBtn'>Далее <img src={whiteArrow} alt='/'/></button>
             </div>
 
 
