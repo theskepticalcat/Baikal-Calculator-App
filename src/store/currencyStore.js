@@ -16,7 +16,7 @@ export default class CurrencyStore {
             {
                 id: 3,
                 name: "RUB",
-                rate: 1
+                rate: "–––––"
             }
         ]
 

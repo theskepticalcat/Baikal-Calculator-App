@@ -12,7 +12,6 @@ import { observer } from 'mobx-react-lite';
 const SelectionPage = observer(() => {
     const {furniture} = useContext(Context);
     const [selectedItem, setSelectedItem] = useState('');
-    console.log(selectedItem);
 
 
     const select = (item) => {

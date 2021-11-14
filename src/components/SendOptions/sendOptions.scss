@@ -1,0 +1,28 @@
+.options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+
+    border-radius: 5px;
+    margin-left: 60px;
+    padding: 0 20px;
+
+    font-size: 17px;
+    font-weight: 500;
+    font-family: 'Roboto';
+
+    &__pen {
+        margin-left: 10px;
+    }
+
+    img {
+        width: 17px;
+        margin: auto 7px;
+    }
+
+    &__active {
+        background-color: white;
+        box-shadow: 0px 4px 40px 0 #2e50571a;
+    }
+}

@@ -9,12 +9,15 @@
 
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
     justify-items: center;
 
     padding: 49px 97px 0 97px;
 
-
+    &__logoAndOptions {
+        display: flex;
+        align-items: center;
+    }
+    
     &__btn {
         @include breakpoint($tablet-bp) {
             padding: 10px;

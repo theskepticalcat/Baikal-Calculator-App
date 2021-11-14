@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import { observer } from 'mobx-react-lite';
 
 import MiniForm from '../components/MiniForm/MiniForm';
-import Header from '../components/Header/Header';
 
 import '../styles/mainPage.scss';
 

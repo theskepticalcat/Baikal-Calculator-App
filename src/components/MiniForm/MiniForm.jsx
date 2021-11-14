@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../..';
 import { observer } from 'mobx-react-lite';
+import { useHistory } from 'react-router-dom';
 
 import Prompt from '../Prompt/Prompt';
 import whiteArrow from '../../assets/images/white-arrow-right.svg';
@@ -14,13 +15,17 @@ const MiniForm = observer(() => {
     const{russianCities} = useContext(Context);     //русские города
     const {chineseCities} = useContext(Context);    //китайские города
     const{currency} = useContext(Context);          //курс валют
+    const{options} = useContext(Context);           //выбранные опции
 
     const [promptActive, setPromptActive] = useState(false);    //состояние подсказки
 
-    const [currentCurrency, setCurrentCurrency] = useState(currency.selectedCurrency.name);
+    const [currentCurrency, setCurrentCurrency] = useState(currency.selectedCurrency.name); //стэйт выбора валюты
     const [currentRate, setRate] = useState(currency.selectedCurrency.rate);     //стэйт курса валют
-    const [currentRussianCity, setRussianCity] = useState(russianCities.russianCities[0].name);       //стэйт для русского города
+    
+    const [currentRussianCity, setRussianCity] = useState(russianCities.russianCities[0].name);     //стэйт для русского города
     const [currentChineseCity, setChineseCity] = useState('');      //стэйт инпута с выбором китайского города
+
+    const history = useHistory();
 
 
 
@@ -116,7 +121,6 @@ const MiniForm = observer(() => {
     }
 
 
-
     //---Выбор валюты и её курса:
     const onChangeCurrency = (e) => {
         setPromptActive(false);     //деактивируем подсказку
@@ -144,6 +148,17 @@ const MiniForm = observer(() => {
         setRate(onSelectRate[0].rate);  //в стейт курса
     }
 
+
+    //Собираем выбранные данные:
+    const onToSelect = (e) => {
+        const selectedOptions = {   //об-кт с выбранными данными
+            from: currentChineseCity,
+            to: currentRussianCity,
+            currency: currentCurrency
+        }
+        options.setOptions(selectedOptions);    //записываем в miniForm стор
+        history.push('/select');
+    }
 
 
     return (
@@ -207,7 +222,8 @@ const MiniForm = observer(() => {
                     </div>
                 </form>
 
-                <button type='submit' className='form__nextBtn'>Далее <img src={whiteArrow} alt='/'/></button>
+
+                <button onClick={onToSelect} type='submit' className='form__nextBtn'> Далее <img src={whiteArrow} alt='/'/></button>
             </div>
 
 
