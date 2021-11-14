@@ -1,3 +1,9 @@
+.wrap {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
 .info {
     margin: -40px 0 0 45px;
 
@@ -15,12 +21,14 @@
     &__empty{
         display: flex;
         justify-content: center;
-
-        margin-right: 30px;
             
         p {
             font-size: 23px;
             margin-top: 70px;
+        }
+
+        .hidden {
+            display: none;
         }
     }
 
@@ -84,6 +92,9 @@
 
     &__specifications {
         margin-top: 24px;
+        font-weight: 400;
+        font-size: 15px;
+        font-family: 'Open Sans';
 
         &-item {
             display: flex;

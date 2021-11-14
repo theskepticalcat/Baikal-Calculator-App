@@ -9,7 +9,8 @@ export default class FurnitureStore {
                 price: 300.000,
                 netweight: 40,
                 grossweight: 50,
-                m3: 2
+                m3: 2,
+                total: 0
             },
             {
                 id: 2,
@@ -17,7 +18,8 @@ export default class FurnitureStore {
                 price: 3000,
                 netweight: 40,
                 grossweight: 50,
-                m3: 3
+                m3: 3,
+                total: 0
             },
             {
                 id: 3,
@@ -25,7 +27,8 @@ export default class FurnitureStore {
                 price: 500,
                 netweight: 40,
                 grossweight: 50,
-                m3: 1
+                m3: 1,
+                total: 0
             },
             {
                 id: 4,
@@ -33,7 +36,8 @@ export default class FurnitureStore {
                 price: 100.000,
                 netweight: 40,
                 grossweight: 50,
-                m3: 4
+                m3: 4,
+                total: 0
             },
             {
                 id: 5,
@@ -41,7 +45,8 @@ export default class FurnitureStore {
                 price: 300,
                 netweight: 40,
                 grossweight: 50,
-                m3: 4
+                m3: 4,
+                total: 0
             },
             {
                 id: 6,
@@ -49,7 +54,8 @@ export default class FurnitureStore {
                 price: 300,
                 netweight: 40,
                 grossweight: 50,
-                m3: 3
+                m3: 3,
+                total: 0
             }
         ];
         this._selectedElem = {};
@@ -70,10 +76,18 @@ export default class FurnitureStore {
     }
 
 
-    setSelectedFurniture(furniture) {
+    setSelectedFurniture(furniture) {   //добавление нового об-кта с мебелью
+        furniture.total = furniture.total + 1;  //увеличиваем количество на 1
         this._selectedFurniture.push(furniture);
     }
+
     get selectedFurniture() {
-        return this._selectedFurniture;
+        //return this._selectedFurniture;  //как получить только уникальные значения из этого об-кта?
+        var unique = Array.from(new Set(this._selectedFurniture.map(JSON.stringify))).map(JSON.parse);
+        return unique;
+    }
+
+    resetSelected(arr) {    //экшен обновления всего массива с эл-тами при удалении элемента
+        this._selectedFurniture = arr;
     }
 }

@@ -17,8 +17,6 @@ const Selected = observer(() => {
     const {furniture} = useContext(Context);
     const history = useHistory();
 
-    console.log(furniture.selectedFurniture.length);
-
 
     //Обработчики для подсказок:
     const hideTipEdit = () => {
@@ -35,6 +33,13 @@ const Selected = observer(() => {
     }
 
 
+    //Удаление элемента из списка по нажатию на крестик:
+    const removeItem = (item) => {
+        const newSelectedFurniture = furniture.selectedFurniture.filter(i => i.id !== item.id);
+        furniture.resetSelected(newSelectedFurniture);
+    }
+
+
     return (
         <div className='selected'>
             
@@ -42,7 +47,7 @@ const Selected = observer(() => {
                 <div>
                     <p className='selected__title'>
                         Добавленная мебель
-                        <span className='selected__items-num'>(3)</span>
+                        <span className='selected__items-num'>({furniture.selectedFurniture.length})</span>
                     </p>
                 </div>
                 <div className='selected__tip selected__tip-edit'>
@@ -55,14 +60,14 @@ const Selected = observer(() => {
             {/* Спецификации мебели */}
             <table className='selected__specifications'>
                 <tr>
-                    <th className='empty-sell hidden'></th>
-                    <th className='empty-sell hidden'></th>
-                    <th className='description-1'><p>Кол-во</p></th>
-                    <th className='description-2'><p>Общая масса нетто, кг</p></th>
-                    <th className='description-3'><p>Общая масса брутто, кг</p></th>
-                    <th className='description-4'><p>Общий объем, м3</p></th>
-                    <th className='description-5'><p>Стоимость единицы</p></th>
-                    <th className='description-6'><p>Удалить</p></th>
+                    <th className='hidden'></th>
+                    <th className='hidden'></th>
+                    <th className='description-1 description'><p>Кол-во</p></th>
+                    <th className='description-2 description'><p>Общая масса нетто, кг</p></th>
+                    <th className='description-3 description'><p>Общая масса брутто, кг</p></th>
+                    <th className='description-4 description'><p>Общий объем, м3</p></th>
+                    <th className='description-5 description'><p>Стоимость единицы</p></th>
+                    <th className='description-6 description'><p>Удалить</p></th>
                 </tr>
             </table>
 
@@ -74,12 +79,14 @@ const Selected = observer(() => {
                         <tr>
                             <td className='description-img'><img src={sofaImg} alt='img'/></td>
                             <td className='description-name'><p>{item.name}</p></td>
-                            <td className='description-1'><p>1</p></td>
-                            <td className='description-2'><p>23</p></td>
-                            <td className='description-3'><p>26</p></td>
-                            <td className='description-4'><p>2</p></td>
-                            <td className='description-5'><p>{item.price} руб.</p></td>
-                            <td className='description-6'><img src={removeImg} alt='remove'/></td>
+                            <td className='description-1 description'><p>{item.total}</p></td>
+                            <td className='description-2 description'><p>23</p></td>
+                            <td className='description-3 description'><p>26</p></td>
+                            <td className='description-4 description'><p>2</p></td>
+                            <td className='description-5 description'><p>{item.price} руб.</p></td>
+                            <td className='description-6 description'>
+                                <button onClick={() => removeItem(item)} className='selected-items--remove' type='button'><img src={removeImg} alt='remove'/></button>
+                            </td>
                         </tr>
                     </table>
                 )}

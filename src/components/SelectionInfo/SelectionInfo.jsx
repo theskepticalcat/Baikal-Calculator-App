@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 
 import './selectionInfo.scss';
@@ -8,22 +8,36 @@ import selectedItemImg from './../../assets/images/coach.png';
 import add from './../../assets/images/blue-add.svg';
 import reduce from './../../assets/images/blue-reduce.svg';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Context } from '../..';
 
 
 
-const SelectionInfo = observer(({selectedItem}) => {
+const SelectionInfo = observer(({selectedItem}) => {    //передали пропсом выбранный айтем из SelectionPage.jsx
+    const {furniture} = useContext(Context);
+
     const [isSelected, setSelected] = useState(selectedItem);   //стэйт отображения выбранного айтема мебели
+    const [total, setTotal] = useState(1);
 
+    //Увеличение и уменьшение количества штук:
+    const increment = () => {
+        setTotal(total + 1);
+    }
+    const decrement = () => {
+        if (total === 1) {
+            return;
+        }
+        setTotal(total - 1);
+    }
 
     return (
-        <div>
+        <div className='wrap'>
         {isSelected === selectedItem
             ? 
             <div className='info__empty'>
-                <p>Вы не выбрали пока ни одного элемента.</p>
+                {furniture.selectedFurniture.length > 0 ? <p>Выберете еще элемент</p> : <p>Вы не выбрали пока ни одного элемента.</p>}
             </div>
             :
-            <div className='info'>
+            <div className='info' id='info'>
                 <div className='info__selected-item'>
                     <img src={selectedItemImg} alt='/' />
                     <p>{selectedItem.name}</p>
@@ -33,17 +47,17 @@ const SelectionInfo = observer(({selectedItem}) => {
                 <div className='info__quantity'>
                     <p>Кол-во:</p>
                     <div className='info__quantity-btns'>
-                        <button type='button'><img src={reduce} alt='-' /></button>
-                        <p className='info__quantity-amount'>1</p>
-                        <button type='button'><img src={add} alt='+' /></button>
+                        <button onClick={decrement} type='button'><img src={reduce} alt='-' /></button>
+                        <p className='info__quantity-amount'>{total}</p>
+                        <button onClick={increment} type='button'><img src={add} alt='+' /></button>
                     </div>
                 </div>
 
                 <div className='info__specifications'>
-                    <div className='info__specifications-item'><p>25 м3</p></div>
-                    <div className='info__specifications-item'><p className='info__placeholder' placeholder='Общая масса нетто, кг'></p></div>
-                    <div className='info__specifications-item'><p className='info__placeholder'>Общая масса брутто, кг</p></div>
-                    <div className='info__specifications-item'><p className='info__placeholder'>Стоимость одной единицы</p></div>
+                    <input className='info__specifications-item' placeholder={`Общий объем: ${selectedItem.m3} м3`} disabled></input>
+                    <input className='info__specifications-item' placeholder={`Общая масса нетто: ${selectedItem.netweight} кг`} disabled></input>
+                    <input className='info__specifications-item' placeholder={`Общая масса брутто: ${selectedItem.grossweight} кг`} disabled></input>
+                    <input className='info__specifications-item' placeholder={`Стоимость одной единицы: ${selectedItem.price}`} disabled></input>
                 </div>
 
                 <form>

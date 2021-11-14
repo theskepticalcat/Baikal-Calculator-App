@@ -11,12 +11,12 @@ import { observer } from 'mobx-react-lite';
 
 const SelectionPage = observer(() => {
     const {furniture} = useContext(Context);
-    const [selectedItem, setSelectedItem] = useState('');
+    const [selectedItem, setSelectedItem] = useState('');  //объект выбранного айтема
 
 
     const select = (item) => {
         setSelectedItem(item);      //добавляем выбранный айтем в стейт для отображения
-        furniture.setSelectedFurniture(item);     //добавляем выбранный айтем в глобальное хранилище
+        furniture.setSelectedFurniture(item);     //в глобальное хранилище
     }
 
 

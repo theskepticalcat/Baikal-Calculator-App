@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     font-family: 'Open Sans';
-    margin: 35px 97px 97px 97px;
+    margin: 130px 97px 97px 97px;
 
 
     header {
@@ -11,7 +11,7 @@
 
 
     &__title {
-        font-size: 36px;
+        font-size: 3rem;
         font-weight: 400;
         margin-right: 42px;
     }
@@ -55,8 +55,6 @@
         }
     }
 
-
-
     &__specifications {
         align-self: flex-end;
 
@@ -66,7 +64,7 @@
         background-color:#F8FAFF;
         border: 1px solid #E2E4EA;
         border-radius: 5px;
-        margin: 16px 4px 10px 0;
+        margin: 16px 0 10px 250px;
 
         :not(:last-of-type) {
             border-right: 1px solid #E2E4EA;
@@ -79,6 +77,21 @@
 
         max-width: 1246px;
         max-height: 600px;
+
+        overflow: scroll;
+
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        &--remove {
+            cursor: pointer;
+            background-color: transparent;
+            box-shadow: none;
+            padding: 0;
+        }
     }
 
 
@@ -91,46 +104,47 @@
             :not(:last-of-type) {
                 border-right: 1px solid #E2E4EA;
             }
-        }
 
-        .hidden {
-            display: none;
+            .hidden {
+                display: none;
+            }
         }
 
         td,
         th {
             font-family: 'Open Sans';
             font-weight: 600;
-            font-size: 14px;
+            font-size: 1.2rem;
             padding: 0 15px;
         }
 
         .description-img {
+            min-width: 120px;
             padding: 0;
         }
 
         .description-name {
-            max-width: 140px;
+            min-width: 130px;
             text-align: left;
         }
 
         .description-1 {
-            min-width: 105px;
+            width: 105px;
         }
         .description-2 {
-            min-width: 190px;
+            width: 190px;
         }
         .description-3 {
-            min-width: 197px;
+            width: 197px;
         }
         .description-4 {
-            min-width: 165px;
+            width: 165px;
         }
         .description-5 {
-            min-width: 179px;
+            width: 179px;
         }
         .description-6 {
-            min-width: 128px;
+            width: 128px;
         }
     }
 
