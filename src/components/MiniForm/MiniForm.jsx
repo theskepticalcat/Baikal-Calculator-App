@@ -28,6 +28,10 @@ const MiniForm = observer(() => {
     const history = useHistory();
 
 
+    const selecRusCity = document.getElementById('form__item--to');
+    const selectUsd = document.getElementById('form__item--usd');
+
+
 
     //Появление подсказки:
     useEffect(() => {
@@ -38,7 +42,7 @@ const MiniForm = observer(() => {
 
 
 
-    //---Автокомплит с китайскими городами:
+    //---Автокомплит с китайскими городами---:
     function showChineseResults(value) {    //получаем ввод из инпута
         const selectChinaCity = document.getElementById('form__item--from');
         const selectChinaCity_title = selectChinaCity.querySelector('.form__item--select__title');
@@ -94,38 +98,29 @@ const MiniForm = observer(() => {
     }
     
 
-    
 
-    //---Выбор куда:
-    const onChangeRussianCity = (e) => {
+    //---Выбор куда---:
+    function onChangeRussianCity() {
         setPromptActive(false);     //деактивируем подсказку
-        
-        const selecRusCity = document.getElementById('form__item--to');
         const selecRusCity_title = selecRusCity.querySelector('.form__item--select__title');
-        const selecRusCity_items = selecRusCity.querySelectorAll('.select-item');
 
         //Выпадающее меню:
         selecRusCity_title.addEventListener('click', () => {
             selecRusCity.setAttribute('data-state', 'active');
         })
-
-        //Закрываем по клику на опцию и сохраняем в стейт:
-        for (let i = 0; i < selecRusCity_items.length; i++) {
-            selecRusCity_items[i].addEventListener('click', (e) => {
-                selecRusCity_title.textContent = e.currentTarget.textContent;
-                selecRusCity.setAttribute('data-state', '');
-
-                setRussianCity(e.currentTarget.textContent);    //записываем в стейт
-            })
-        }
+    }
+    //Закрываем по клику на опцию и СОХРАНЕНИЕ В СТЕЙТ:
+    function onOptionRussian(item) {   //получаем выбранный айтем из списка русских городов
+        selecRusCity.setAttribute('data-state', '');
+        setRussianCity(item.name);
     }
 
 
-    //---Выбор валюты и её курса:
+
+    //---Выбор валюты и её курса---:
     const onChangeCurrency = (e) => {
         setPromptActive(false);     //деактивируем подсказку
 
-        const selectUsd = document.getElementById('form__item--usd');
         const selectUsd_title = selectUsd.querySelector('.form__item--select__title');
         const selectUsd_items = selectUsd.querySelectorAll('.select-item');
 
@@ -134,22 +129,19 @@ const MiniForm = observer(() => {
                 selectUsd.setAttribute('data-state', 'active');
         })
 
-        //Закрываем по клику на опцию и сохраняем в стейт:
-        for (let i = 0; i < selectUsd_items.length; i++) {
-            selectUsd_items[i].addEventListener('click', (e) => {
-                selectUsd_title.textContent = e.currentTarget.textContent;
-                selectUsd.setAttribute('data-state', '');
+    }
+    //Закрываем по клику на опцию и СОХРАНЕНИЕ В СТЕЙТ:
+    function onOptionCurrency(item) {   //получаем выбранный айтем из списка валют
+        selectUsd.setAttribute('data-state', '');
+        setCurrentCurrency(item.name);
 
-                setCurrentCurrency(e.currentTarget.textContent);    //записываем в стейт
-            })
-        }
         //Меняем курс валюты:
-        const onSelectRate = currency.currency.filter(item => item.name === currentCurrency);
-        setRate(onSelectRate[0].rate);  //в стейт курса
+        setRate(item.rate);
     }
 
 
-    //Собираем выбранные данные:
+
+    //---Собираем выбранные данные---:
     const onToSelect = (e) => {
         const selectedOptions = {   //об-кт с выбранными данными
             from: currentChineseCity,
@@ -179,7 +171,7 @@ const MiniForm = observer(() => {
 
 
                     {/**Куда: */}
-                    <div onClick={e => onChangeRussianCity(e)} className='form__item' id='form__item--to' data-state=''>
+                    <div onClick={() => onChangeRussianCity()} className='form__item' id='form__item--to' data-state=''>
                         <div className='form__item--select__title'>  {/**главный блок с названием*/}
                             {currentRussianCity}
                         </div>
@@ -189,7 +181,7 @@ const MiniForm = observer(() => {
                                 return (
                                     <div className='select-item' key={item.id}>
                                         <input id="select0" className='select__input' type="radio"/>
-                                        <label htmlFor="select0" className='select__label'>{item.name}</label>
+                                        <label onClick={() => onOptionRussian(item)} htmlFor="select0" className='select__label'>{item.name}</label>
                                     </div>
                                 )
                             })}
@@ -208,7 +200,7 @@ const MiniForm = observer(() => {
                                 return (
                                     <div className='select-item' key={item.id}>
                                         <input id="select0" className='select__input' type="radio"/>
-                                        <label htmlFor="select0" className='select__label'>{item.name}</label>
+                                        <label onClick={() => onOptionCurrency(item)} htmlFor="select0" className='select__label'>{item.name}</label>
                                     </div>
                                 )
                             })}
