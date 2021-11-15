@@ -28,7 +28,7 @@ const MiniForm = observer(() => {
     const history = useHistory();
 
 
-    const selecRusCity = document.getElementById('form__item--to');
+    const selectRusCity = document.getElementById('form__item--to');
     const selectUsd = document.getElementById('form__item--usd');
 
 
@@ -102,16 +102,16 @@ const MiniForm = observer(() => {
     //---Выбор куда---:
     function onChangeRussianCity() {
         setPromptActive(false);     //деактивируем подсказку
-        const selecRusCity_title = selecRusCity.querySelector('.form__item--select__title');
+        const selectRusCity_title = selectRusCity.querySelector('.form__item--select__title');
 
         //Выпадающее меню:
-        selecRusCity_title.addEventListener('click', () => {
-            selecRusCity.setAttribute('data-state', 'active');
+        selectRusCity_title.addEventListener('click', () => {
+            selectRusCity.setAttribute('data-state', 'active');
         })
     }
     //Закрываем по клику на опцию и СОХРАНЕНИЕ В СТЕЙТ:
     function onOptionRussian(item) {   //получаем выбранный айтем из списка русских городов
-        selecRusCity.setAttribute('data-state', '');
+        selectRusCity.setAttribute('data-state', '');
         setRussianCity(item.name);
     }
 
@@ -120,9 +120,7 @@ const MiniForm = observer(() => {
     //---Выбор валюты и её курса---:
     const onChangeCurrency = (e) => {
         setPromptActive(false);     //деактивируем подсказку
-
         const selectUsd_title = selectUsd.querySelector('.form__item--select__title');
-        const selectUsd_items = selectUsd.querySelectorAll('.select-item');
 
         //Выпадающее меню:
         selectUsd_title.addEventListener('click', () => {

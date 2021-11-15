@@ -21,11 +21,11 @@ const SelectionPage = observer(() => {
 
 
     return (
+        <div className='page-wrapper'>
         <div className='selection'>
             
             <div className='selection__header'>
                 <p>Выберите мебель, которую нужно<br></br>перевезти</p>
-                <p>Затем заполните следующие<br></br>поля выбранного элемента:</p>
             </div>
 
             <form className='selection__search'>
@@ -52,6 +52,7 @@ const SelectionPage = observer(() => {
                 {/* Информация о выбранном элементе мебели */}
                 <SelectionInfo selectedItem={selectedItem}/>
             </div>
+        </div>
         </div>
     )
 })

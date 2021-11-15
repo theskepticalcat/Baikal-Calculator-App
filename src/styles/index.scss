@@ -49,7 +49,7 @@ input {
         color: $light-grey;
         opacity: .5;
 
-        font-size: 15px;
+        font-size: 1.1rem;
         font-weight: 400;
         font-family: 'Open Sans';
     }
@@ -71,12 +71,16 @@ li {
     font-family: 'Open Sans';
 
     &__search {
-        width: 7.4em;
+        width: 8.1em;
         height: 53px;
+
+        @include breakpoint($tablet-bp) {
+            display: none;
+        }
     }
 
     &__medium {
-        width: 132px;
+        width: 9.4em;
         height: 45px;
 
         font-weight: 500;
@@ -84,7 +88,7 @@ li {
     }
 
     &__submit {
-        width: 206px;
+        width: 14.7em;
         height: 55px;
 
         border-radius: 5px;
@@ -105,12 +109,12 @@ li {
     }
 
     &__whide{
-        width: 262px;
+        width: 18.7em;
         height: 55px;
         margin: 20px 0;
 
         @include breakpoint($desktop-bp) {
-            width: 220px;
+            width: 15.7em;
             height: 40px;
             margin: 10px 0;
         }

@@ -11,7 +11,6 @@ import MiniFormStore from './store/miniFormStore';
 
 export const Context = createContext(null);
 
-
 ReactDOM.render(
   <Context.Provider value={{
     furniture: new FurnitureStore(),

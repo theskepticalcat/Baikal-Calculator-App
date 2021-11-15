@@ -55,7 +55,7 @@
                     }
                     
                     .form__item--select__content {
-                      opacity: 1;
+                        display: block;
                     }
                     
                     .select__label + .select__input + .select__label {
@@ -118,7 +118,7 @@
                     
                     transition: all 0.3s ease-out;
                   
-                    opacity: 0;
+                    display: none;
                     z-index: 8;
                     cursor: pointer;
 

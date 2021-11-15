@@ -38,6 +38,9 @@ const SelectionInfo = observer(({selectedItem}) => {    //передали пр�
             </div>
             :
             <div className='info' id='info'>
+                <div className='info__header'>
+                    <p>Затем заполните следующие<br></br>поля выбранного элемента:</p>
+                </div>
                 <div className='info__selected-item'>
                     <img src={selectedItemImg} alt='/' />
                     <p>{selectedItem.name}</p>
@@ -45,10 +48,10 @@ const SelectionInfo = observer(({selectedItem}) => {    //передали пр�
 
 
                 <div className='info__quantity'>
-                    <p>Кол-во:</p>
-                    <div className='info__quantity-btns'>
+                    <p className='info__quantity--quantity'>Кол-во:</p>
+                    <div className='info__quantity--btns'>
                         <button onClick={decrement} type='button'><img src={reduce} alt='-' /></button>
-                        <p className='info__quantity-amount'>{total}</p>
+                        <p className='info__quantity--amount'>{total}</p>
                         <button onClick={increment} type='button'><img src={add} alt='+' /></button>
                     </div>
                 </div>

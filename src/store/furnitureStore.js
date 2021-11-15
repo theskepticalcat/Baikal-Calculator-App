@@ -41,20 +41,38 @@ export default class FurnitureStore {
             },
             {
                 id: 5,
-                name: "Шкаф, ничего не вмещается",
-                price: 300,
-                netweight: 40,
-                grossweight: 50,
-                m3: 4,
+                name: "Какая-то деревянная палка",
+                price: 400,
+                netweight: 5,
+                grossweight: 7,
+                m3: 1,
                 total: 0
             },
             {
                 id: 6,
-                name: "Стол, трескается",
-                price: 300,
-                netweight: 40,
-                grossweight: 50,
-                m3: 3,
+                name: "Полка для мемов",
+                price: 8000,
+                netweight: 10,
+                grossweight: 15,
+                m3: 2,
+                total: 0
+            },
+            {
+                id: 7,
+                name: "Кровать для кота",
+                price: 6000,
+                netweight: 8,
+                grossweight: 5,
+                m3: 1,
+                total: 0
+            },
+            {
+                id: 8,
+                name: "Миска риса",
+                price: 10,
+                netweight: 0.5,
+                grossweight: 0.6,
+                m3: 0.3,
                 total: 0
             }
         ];
