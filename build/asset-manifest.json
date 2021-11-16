@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/Calculator/static/css/main.1ae6e757.chunk.css",
-    "main.js": "/Calculator/static/js/main.441a014e.chunk.js",
-    "main.js.map": "/Calculator/static/js/main.441a014e.chunk.js.map",
+    "main.css": "/Calculator/static/css/main.2e5cb24a.chunk.css",
+    "main.js": "/Calculator/static/js/main.5007d464.chunk.js",
+    "main.js.map": "/Calculator/static/js/main.5007d464.chunk.js.map",
     "runtime-main.js": "/Calculator/static/js/runtime-main.5f533f8b.js",
     "runtime-main.js.map": "/Calculator/static/js/runtime-main.5f533f8b.js.map",
-    "static/js/2.771340a2.chunk.js": "/Calculator/static/js/2.771340a2.chunk.js",
-    "static/js/2.771340a2.chunk.js.map": "/Calculator/static/js/2.771340a2.chunk.js.map",
+    "static/js/2.61eb430b.chunk.js": "/Calculator/static/js/2.61eb430b.chunk.js",
+    "static/js/2.61eb430b.chunk.js.map": "/Calculator/static/js/2.61eb430b.chunk.js.map",
     "index.html": "/Calculator/index.html",
-    "static/css/main.1ae6e757.chunk.css.map": "/Calculator/static/css/main.1ae6e757.chunk.css.map",
-    "static/js/2.771340a2.chunk.js.LICENSE.txt": "/Calculator/static/js/2.771340a2.chunk.js.LICENSE.txt",
+    "static/css/main.2e5cb24a.chunk.css.map": "/Calculator/static/css/main.2e5cb24a.chunk.css.map",
+    "static/js/2.61eb430b.chunk.js.LICENSE.txt": "/Calculator/static/js/2.61eb430b.chunk.js.LICENSE.txt",
     "static/media/mainPage.scss": "/Calculator/static/media/Background.a3cbd343.png",
+    "static/media/arrow-right-grey.09788dc1.svg": "/Calculator/static/media/arrow-right-grey.09788dc1.svg",
     "static/media/blue-add.81076fbb.svg": "/Calculator/static/media/blue-add.81076fbb.svg",
     "static/media/blue-arrow-down.66376cfb.svg": "/Calculator/static/media/blue-arrow-down.66376cfb.svg",
     "static/media/blue-arrow-left.e51b762a.svg": "/Calculator/static/media/blue-arrow-left.e51b762a.svg",
@@ -19,6 +20,7 @@
     "static/media/blue-reduce.e746dfcb.svg": "/Calculator/static/media/blue-reduce.e746dfcb.svg",
     "static/media/burger.2c4d3caa.svg": "/Calculator/static/media/burger.2c4d3caa.svg",
     "static/media/facebook.81ea4e70.svg": "/Calculator/static/media/facebook.81ea4e70.svg",
+    "static/media/pen.a0e1cd65.svg": "/Calculator/static/media/pen.a0e1cd65.svg",
     "static/media/red-big-delete.7f303b71.svg": "/Calculator/static/media/red-big-delete.7f303b71.svg",
     "static/media/red-close.09511a80.svg": "/Calculator/static/media/red-close.09511a80.svg",
     "static/media/smallArrowDown.02f1dfbb.svg": "/Calculator/static/media/smallArrowDown.02f1dfbb.svg",
@@ -27,8 +29,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.5f533f8b.js",
-    "static/js/2.771340a2.chunk.js",
-    "static/css/main.1ae6e757.chunk.css",
-    "static/js/main.441a014e.chunk.js"
+    "static/js/2.61eb430b.chunk.js",
+    "static/css/main.2e5cb24a.chunk.css",
+    "static/js/main.5007d464.chunk.js"
   ]
 }
