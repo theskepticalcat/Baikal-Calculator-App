@@ -72,7 +72,7 @@ li {
 
     &__search {
         width: 8.1em;
-        height: 53px;
+        height: 3.7em;
 
         @include breakpoint($tablet-bp) {
             display: none;
@@ -81,7 +81,7 @@ li {
 
     &__medium {
         width: 9.4em;
-        height: 45px;
+        height: 3.2em;
 
         font-weight: 500;
         font-family: 'Roboto';
@@ -89,7 +89,7 @@ li {
 
     &__submit {
         width: 14.7em;
-        height: 55px;
+        height: 3.9em;
 
         border-radius: 5px;
     }
@@ -110,12 +110,12 @@ li {
 
     &__whide{
         width: 18.7em;
-        height: 55px;
+        height: 3.9em;
         margin: 20px 0;
 
         @include breakpoint($desktop-bp) {
             width: 15.7em;
-            height: 40px;
+            height: 2.8em;
             margin: 10px 0;
         }
     }
@@ -134,12 +134,9 @@ li {
 
 //Обёртка для страниц:
 .page-wrapper {
-    width: 100vw;
-    height: 100vh;
-
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     overflow: hidden;
+    height: 90vh;
 }

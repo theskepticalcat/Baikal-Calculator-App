@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     font-family: 'Open Sans';
-    margin: 130px 97px 97px 97px;
+    margin: 3.3em auto;
 
 
     header {
@@ -30,6 +30,7 @@
         box-shadow: rgba(93, 170, 255, 0.1);
         transition: 0.2s visibility;
         margin-bottom: 15px;
+        cursor: pointer;
 
         &-calculate {
             align-self: end;

@@ -41,8 +41,8 @@ const Selected = observer(() => {
 
 
     return (
+        <div className='page-wrapper'>
         <div className='selected'>
-            
             <header>
                 <div>
                     <p className='selected__title'>
@@ -114,6 +114,7 @@ const Selected = observer(() => {
                 </div>
             </div>
 
+        </div>
         </div>
     )
 })

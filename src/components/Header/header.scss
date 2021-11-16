@@ -2,7 +2,7 @@
 @import './../../styles/vars.scss';
 
 .header {
-    position: absolute;
+    // position: absolute;
     top: 0;
     width: 100%;
     z-index: 1000;
@@ -11,7 +11,7 @@
     justify-content: space-between;
     justify-items: center;
 
-    padding: 3.5em 97px 0 97px;
+    padding: 3.5em 6.7em 0 6.7em;
 
     &__logoAndOptions {
         display: flex;
@@ -37,8 +37,8 @@
     }
 
     .btn__white {
-        width: 7.7em;
-        height: 45px;
+        width: 9.4em;
+        height: 3.2em;
     
         background-color: white;
         font-family: 'Open Sans';

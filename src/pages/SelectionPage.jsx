@@ -23,13 +23,12 @@ const SelectionPage = observer(() => {
     return (
         <div className='page-wrapper'>
         <div className='selection'>
-            
             <div className='selection__header'>
-                <p>Выберите мебель, которую нужно<br></br>перевезти</p>
+                <p>Выберите мебель, которую нужно<br></br>перевезти:</p>
             </div>
 
             <form className='selection__search'>
-                <input className='selection__search-input' placeholder='Введите название' type='text'></input>
+                <input className='selection__search--input' placeholder='Введите название' type='text'></input>
                 <button className='btn btn__search btn__blue' type='submit'>Поиск</button>
             </form>
 
@@ -39,9 +38,9 @@ const SelectionPage = observer(() => {
                 <div className='selection__items'>
                     {furniture.furniture.map(item => {
                         return (
-                        <div key={item.id} className='selection__items-item'>
+                        <div key={item.id} className='selection__items--item'>
                             <img src={coach} alt="диван" />
-                            <p className='item_name'>{item.name}</p>
+                            <p className='selection__items--name'>{item.name}</p>
                             <button onClick={() => select(item)} type='button' className='btn btn__blue btn__medium btn__white-active'>Выбрать</button>
                         </div>
                         )

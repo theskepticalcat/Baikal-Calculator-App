@@ -3,11 +3,8 @@
 
 .contacts-wrapper {
     display: flex;
-    align-items: center;
-    justify-items: center;
-    justify-content: space-around;
-    margin: 80px 10px 10px 97px;
-    width: 100vw;
+    justify-content: space-between;
+    margin: auto;
 
     @include breakpoint($tablet-bp) {
        margin: auto;
@@ -17,18 +14,17 @@
     .contacts {
         display: flex;
         flex-direction: column;
-        align-self: flex-start;
 
         font-weight: 400;
         font-family: 'Open Sans';
+        margin-right: 10em;
         
         &__title {
-            margin-top: 20px;
             font-size: 5rem;
         }
         
         &__contact {
-            margin-top: 20px;
+            margin-top: 1.4em;
 
             &--title {
                 font-size: 2.5rem;
@@ -37,7 +33,7 @@
             &--contacts {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                margin-top: 10px;
+                margin-top: 0.8em;
 
                 font-size: 1.8rem;
                 font-family: 'Roboto';
@@ -46,13 +42,13 @@
                     color: #606F7A;
                 }
                 p {
-                    margin-top: 20px;
+                    margin-top: 1.4em;
                 }
             }
         }
 
         &__socials {
-            margin-top: 62px;
+            margin-top: 4.4em;
             font-family: 'Roboto';
 
             &--title {
@@ -60,13 +56,13 @@
             }
 
             .socials {
-                width: 431px;
-                margin-top: 38px;
+                width: 30.7em;
+                margin-top: 2.7em;
                 font-size: 1.8rem;
 
                 display: grid;
                 grid-template: 1fr 1fr / 1fr 1fr;
-                grid-gap: 35px;
+                grid-gap: 2.5em;
 
                 &__instagram,
                 &__whatsapp,
@@ -77,10 +73,10 @@
                     width: auto;
 
                     img {
-                        max-width: 50px;
-                        max-height: 50px;
+                        max-width: 3.5em;
+                        max-height: 3.5em;
 
-                        margin-right: 24px;
+                        margin-right: 1.7em;
                     }
                 }
             }
@@ -110,8 +106,8 @@
         }
     
         &__btn {
-            width: 132px;
-            height: 45px;
+            width: 9.4em;
+            height: 3.2em;
             
             background-color: #FFFFFF;
             
@@ -119,7 +115,7 @@
             font-size: 1.2rem;
             color: #606F7A;
                 
-            margin-top: 36px;
+            margin-top: 2.5em;
             cursor: pointer;
             transition: 0.2s;
             
@@ -142,7 +138,7 @@
             font-size: 2.8rem;
             font-weight: 300;
             font-family: 'Open Sans';
-            margin-bottom: 30px;
+            margin-bottom: 2.1em;
             text-align: center;
 
             :not(:last-of-type) {

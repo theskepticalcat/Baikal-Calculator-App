@@ -4,9 +4,7 @@
 .contact-form {
     display: grid;
     grid-template-rows: 2fr 0.5fr 3fr;
-
     font-family: 'Open Sans';
-    max-height: 620px;
 
     p {
         height: 10px;
@@ -17,11 +15,11 @@
         display: grid;
         grid-template: 1fr 1fr / 1fr 1fr;
         align-self: flex-end;
-        max-width: 502px;
+        width: 35.8em;
 
         input {
-            max-width: 246px;
-            height: 53px;
+            width: 17.5em;
+            height: 3.7em;
             margin: 0 10px 10px 0;
 
             :active {
@@ -33,12 +31,12 @@
     &__textarea {
         display: flex;
         flex-direction: column;
-        margin-top: 18px;
+        margin-top: 1.2em;
         
         textarea {
-            max-width: 502px;
-            height: 100px;
-            margin-top: 20px;
+            width: 35.8em;
+            height: 7.1em;
+            margin-top: 1.4em;
         }
     }
 
