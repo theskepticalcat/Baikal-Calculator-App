@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 
 import './selectionInfo.scss';
-import './../../styles/index.scss';
 
 import selectedItemImg from './../../assets/images/coach.png';
 import add from './../../assets/images/blue-add.svg';
@@ -14,9 +13,11 @@ import { Context } from '../..';
 
 const SelectionInfo = observer(({selectedItem}) => {    //передали пропсом выбранный айтем из SelectionPage.jsx
     const {furniture} = useContext(Context);
+    console.log(selectedItem);
 
     const [isSelected, setSelected] = useState(selectedItem);   //стэйт отображения выбранного айтема мебели
     const [total, setTotal] = useState(1);
+
 
     //Увеличение и уменьшение количества штук:
     const increment = () => {
@@ -28,6 +29,12 @@ const SelectionInfo = observer(({selectedItem}) => {    //передали пр�
         }
         setTotal(total - 1);
     }
+
+
+    const addSelectedItem = () => {
+        console.log('hehe');
+    }
+
 
     return (
         <div className='wrap'>
@@ -66,7 +73,7 @@ const SelectionInfo = observer(({selectedItem}) => {    //передали пр�
                 <form>
                     <button className='btn btn__blue btn__submit'>Сбросить</button>
                     <Link to="/selected">
-                        <button onClick={e => e.preventDefault} className='btn btn__blue btn__submit'>Добавить</button>
+                        <button onClick={addSelectedItem} className='btn btn__blue btn__submit'>Добавить</button>
                     </Link>
                 </form>
             </div>

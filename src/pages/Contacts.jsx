@@ -15,7 +15,7 @@ const Contacts = () => {
     const history = useHistory();
 
     return (
-    <div className='page-wrapper'>
+    <div>
         <div className='contacts-wrapper'>
 
             <div className='contacts'>

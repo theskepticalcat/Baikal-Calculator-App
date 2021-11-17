@@ -14,18 +14,35 @@
         display: flex;
         flex-direction: column;
         align-self: flex-start;
-        margin: auto 97px;
+        margin: auto 6.9em;
     
-        h3 {
-            font-size: 4.7rem;
+        &--title {
+            font-size: 3.4rem;
             font-weight: 400;
             font-family: 'Open Sans';
             color: #606F7A;
+
+            margin-bottom: 1.5em;
     
             @include breakpoint($tablet-bp) {
                 font-size: 3rem;
                 font-weight: 300;
                 max-width: 335px;
+            }
+        }
+
+        &--inscriptions {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            width: 37.4em;
+            height: 2em;
+
+            font-family: 'Roboto';
+            font-size: 1rem;
+            opacity: 0.5;
+
+            p {
+                margin-left: 0.7em;
             }
         }
     }

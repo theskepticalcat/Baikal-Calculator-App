@@ -6,10 +6,12 @@ import './sendOptions.scss';
 import arrowRightSvg from './../../assets/images/arrow-right-grey.svg';
 import penSvg from './../../assets/images/pen.svg';
 
-const SendOptions = observer(() => {
-    const{options} = useContext(Context);
-
+const SendOptions = () => {
     const [active, setActive] = useState(false);
+
+    const selectedOptions = JSON.parse(localStorage.getItem('selectItem'));
+
+
 
     const onActive = () => {
         setActive(true);
@@ -17,17 +19,16 @@ const SendOptions = observer(() => {
         optionsArea.classList.add('options__active');
     }
 
-
     return (
          <div onClick={onActive} className='options' id='options'>
-            <p>{options.selectedOptions.from}</p>
+            <p>{selectedOptions.from}</p>
             <div><img src={arrowRightSvg} alt="/" /></div>
-            <p>{options.selectedOptions.to}{`, `}</p>
-            <p>{options.selectedOptions.currency}</p>
+            <p>{selectedOptions.to}{`, `}</p>
+            <p>{selectedOptions.currency}</p>
 
             {active === true && <div className='options__pen'><img src={penSvg} alt='change'/></div>}
         </div>
     )
-})
+}
 
 export default SendOptions;

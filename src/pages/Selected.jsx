@@ -10,7 +10,6 @@ import arrowDownImg from './../assets/images/blue-arrow-down.svg';
 import arrowRightImg from './../assets/images/blue-arrow-right.svg';
 
 import './../styles/selected.scss';
-import './../styles/index.scss';
 
 
 const Selected = observer(() => {
@@ -41,7 +40,6 @@ const Selected = observer(() => {
 
 
     return (
-        <div className='page-wrapper'>
         <div className='selected'>
             <header>
                 <div>
@@ -114,7 +112,6 @@ const Selected = observer(() => {
                 </div>
             </div>
 
-        </div>
         </div>
     )
 })

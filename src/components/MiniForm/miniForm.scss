@@ -9,6 +9,10 @@
     .form {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
+        height: 5.7em;
+        background-color: white;
+        border-radius: 3px;
+        align-items: center;
 
             &__item {
                 position: relative;
@@ -17,30 +21,35 @@
                 align-items: center;
                 justify-content: center;
                 flex-direction: column;
-                width: 135px;
+                width: 9.6em;
+                height: 4.7em;
 
-                border-right: 1px solid #DEDEDE;
                 background-color: white;
+                border-right: 1px solid #DEDEDE;
                 cursor: pointer;
 
-                &__results {
-                    position: absolute;
-                    top: 67px;
-                    
-                    align-items: center;
-                    width: 100%;
-                    z-index: 100;
-
-                    @include breakpoint($tablet-bp) {
-                            top: 46px;
-                    }
-                }
+                font-family: 'Roboto';
+                font-size: 1em;
+                font-weight: 500;
+                color: $grey;
 
                 &--rate {
-                    height: 100%;
                     p {
                         color: #B7B7B7;
                     }
+                }
+
+                &.error {
+                    border: 1px solid red;
+                    height: 5.8em;
+                    opacity: .8;
+                }
+
+                input {
+                    font-family: 'Roboto';
+                    font-size: 1em;
+                    font-weight: 500;
+                    color: $grey;
                 }
 
                 &[data-state="active"] {
@@ -84,6 +93,8 @@
                   
                       width: 10px;
                       height: 2px;
+                      opacity: 0.3;
+                      color: $light-grey;
                   
                       background-color: #333333;
                       transition: all 0.3s ease-out;
@@ -97,12 +108,12 @@
 
                 &--select__content {
                     position: absolute;
-                    top: 67px;
+                    top: 51px;
                   
                     display: flex;
                     flex-direction: column;
                     width: 100%;
-                    max-height: 235px;
+                    max-height: 16.7em;
                     overflow: scroll;
 
                     -ms-overflow-style: none;
@@ -128,8 +139,8 @@
                         align-items: center;
                         justify-content: space-around;
                         width: 100%;
+                        height: 5em;
 
-                        min-height: 67px;
                         cursor: pointer;
                         border-top: 1px solid #DEDEDE;
     
@@ -152,6 +163,10 @@
                     @include breakpoint($tablet-bp) {
                         top: 45px; 
                     }
+
+                    :hover {
+                        background-color: rgba(248, 248, 248, 0.521);
+                    }
                 }
 
 
@@ -167,18 +182,26 @@
 
 
         &__nextBtn {
-            margin-left: 12px;
-            width: 163px;
-            height: 67px;
+            margin-left: 1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 11.6em;
+            height: 4.7em;
         
             background-color: #5DAAFF;
             color: white;
         
             font-family: 'Roboto';
-            font-size: 17px;
+            font-size: 1.2rem;
             font-weight: 500;
         
             cursor: pointer;
+
+            img {
+                margin-left: 1em;
+            }
         
             &:hover {
                 background-color: #2876CC;
@@ -205,5 +228,18 @@
         justify-content: center;
         align-items: center;
         max-width: 335px;
+    }
+}
+
+.valid-error {
+    // display: none;
+    font-size: 0.9rem;
+    font-family: 'Roboto';
+
+    padding: 0.5em 1.5em;
+
+    p {
+        color: red;
+        opacity: .8;
     }
 }

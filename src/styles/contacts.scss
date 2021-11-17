@@ -4,7 +4,7 @@
 .contacts-wrapper {
     display: flex;
     justify-content: space-between;
-    margin: auto;
+    margin: 10em 6.9em;
 
     @include breakpoint($tablet-bp) {
        margin: auto;
@@ -17,7 +17,7 @@
 
         font-weight: 400;
         font-family: 'Open Sans';
-        margin-right: 10em;
+        margin-right: 5em;
         
         &__title {
             font-size: 5rem;
@@ -164,14 +164,13 @@
 footer {
     position: absolute;
     bottom: 0;
-    width: 100%;
-    
+    right: 0;
     display: flex;
     justify-content: flex-end;
+    margin: 0 6.9em 3.7em 0;
+    
 
     .back-link {
-        margin: 0 97px 52px 0;
-
         font-weight: 600;
         font-size: 1.6rem;
         font-family: 'Open Sans';

@@ -76,21 +76,12 @@ export default class FurnitureStore {
                 total: 0
             }
         ];
-        this._selectedElem = {};
         this._selectedFurniture = [];
         makeAutoObservable(this);
     }
 
     get furniture() {
         return this._furniture;
-    }
-
-
-    setselectedElem(item) {
-        this._selectedElem = item;
-    }
-    get selectedElem() {
-        return this._selectedElem;
     }
 
 

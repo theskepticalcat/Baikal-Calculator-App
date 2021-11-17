@@ -8,12 +8,16 @@ import '../styles/mainPage.scss';
 
 const MainPage = observer(() => {
     return (
-        <div className='page-wrapper'>
-            <div className='main-page'>
-                <div className='main-page__mini-form'>
-                    <h3>Рассчитайте<br></br>стоимость доставки из Китая</h3>
-                    <MiniForm/>
+        <div className='main-page'>
+            <div className='main-page__mini-form'>
+                <p className='main-page__mini-form--title'>Рассчитайте<br></br>стоимость доставки из Китая</p>
+                <div className='main-page__mini-form--inscriptions'>
+                    <p>Откуда</p>
+                    <p>Куда</p>
+                    <p>Валюта</p>
+                    <p>Курс</p>
                 </div>
+                <MiniForm/>
             </div>
         </div>
     )

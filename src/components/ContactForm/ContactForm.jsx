@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './contactForm.scss';
-import './../../styles/index.scss';
 
 const ContactForm = () => {
     const [name, setName] = useState('');
@@ -64,10 +64,10 @@ const ContactForm = () => {
             <p style={{color:'red'}}>{error}</p>
 
             <div className='contact-form__textarea'>
-                <p>Опишите ваш запрос</p>
+                <p className='contact-form__textarea--inscription'>Опишите ваш запрос</p>
                 <textarea></textarea>
                 <button disabled={!formValid} className='btn btn__whide btn__blue' type='submit'>Связаться по доставке</button>
-                <p>Нажимая на кнопку, вы даете <strong>согласие на обработку</strong><br></br>своих персональных данных</p>
+                <p>Нажимая на кнопку, вы даете <Link><strong>согласие на обработку</strong></Link><br></br>своих персональных данных</p>
             </div>
         </form>
     )

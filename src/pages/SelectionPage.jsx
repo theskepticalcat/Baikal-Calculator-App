@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import SelectionInfo from '../components/SelectionInfo/SelectionInfo';
 
 import './../styles/selectionPage.scss';
-import './../styles/index.scss';
 
 import coach from './../assets/images/coach.png';
 import { Context } from '..';
@@ -16,12 +15,10 @@ const SelectionPage = observer(() => {
 
     const select = (item) => {
         setSelectedItem(item);      //добавляем выбранный айтем в стейт для отображения
-        furniture.setSelectedFurniture(item);     //в глобальное хранилище
     }
 
 
     return (
-        <div className='page-wrapper'>
         <div className='selection'>
             <div className='selection__header'>
                 <p>Выберите мебель, которую нужно<br></br>перевезти:</p>
@@ -51,7 +48,6 @@ const SelectionPage = observer(() => {
                 {/* Информация о выбранном элементе мебели */}
                 <SelectionInfo selectedItem={selectedItem}/>
             </div>
-        </div>
         </div>
     )
 })

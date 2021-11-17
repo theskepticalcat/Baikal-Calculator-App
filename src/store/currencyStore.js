@@ -10,7 +10,7 @@ export default class CurrencyStore {
             },
             {
                 id: 2,
-                name: "CYN",
+                name: "CNY",
                 rate: 11.14
             },
             {
