@@ -17,6 +17,10 @@
     @include breakpoint($tablet-bp) {
         display: none;
     }
+
+    @media screen and (min-width: $desktop-bp) {
+        padding-top: 23em;
+    }
 }
 
 .selection {

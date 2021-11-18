@@ -1,9 +1,11 @@
+@import './mixin.scss';
+@import './vars.scss';
+
 .selected {
     display: flex;
     flex-direction: column;
     font-family: 'Open Sans';
     padding: 9.7em 6.9em 1em 6.9em;
-
 
     header {
         display: flex;
@@ -182,5 +184,9 @@
             display: flex;
             align-items: center;
         }
+    }
+
+    @media screen and (min-width: $desktop-bp) {
+        padding-top: 15em;
     }
 }

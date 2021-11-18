@@ -159,6 +159,10 @@
             display: flex;
         }
     }
+
+    @media screen and (min-width: $desktop-bp) {
+        margin-top: 20em;
+    }
 }
 
 footer {
