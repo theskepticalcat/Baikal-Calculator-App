@@ -15,23 +15,26 @@ const SelectionPage = observer(() => {
 
     const select = (item) => {
         setSelectedItem(item);      //добавляем выбранный айтем в стейт для отображения
+        localStorage.setItem('selectedItem', JSON.stringify(item));
     }
 
 
     return (
+        <div>
+        <div className='selection__header'>
+            <p>Выберите мебель, которую нужно<br></br>перевезти:</p>
+            <p>Затем заполните следующие<br></br>поля выбранного элемента:</p>
+        </div>
+        
         <div className='selection'>
-            <div className='selection__header'>
-                <p>Выберите мебель, которую нужно<br></br>перевезти:</p>
-            </div>
-
-            <form className='selection__search'>
-                <input className='selection__search--input' placeholder='Введите название' type='text'></input>
-                <button className='btn btn__search btn__blue' type='submit'>Поиск</button>
-            </form>
-
 
             {/* Вывод всей мебели */}
             <div className='selection__wrap'>
+                <form className='selection__search'>
+                    <input className='selection__search--input' placeholder='Введите название' type='text'></input>
+                    <button className='btn btn__search btn__blue' type='submit'>Поиск</button>
+                </form>
+
                 <div className='selection__items'>
                     {furniture.furniture.map(item => {
                         return (
@@ -43,11 +46,11 @@ const SelectionPage = observer(() => {
                         )
                     })}
                 </div>
-                
-
-                {/* Информация о выбранном элементе мебели */}
-                <SelectionInfo selectedItem={selectedItem}/>
             </div>
+
+            {/* Информация о выбранном элементе мебели */}
+            <SelectionInfo selectedItem={selectedItem}/>
+        </div>
         </div>
     )
 })

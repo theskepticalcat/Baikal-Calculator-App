@@ -24,7 +24,6 @@ const MiniForm = observer(() => {
     const [currentRussianCity, setRussianCity] = useState(russianCities.russianCities[0].name);     //стэйт для русского города
     const [currentChineseCity, setChineseCity] = useState('');      //стэйт китайского города
 
-
     const history = useHistory();
 
 
@@ -39,124 +38,124 @@ const MiniForm = observer(() => {
     useEffect(() => {
         setTimeout(() => {
                 setPromptActive(true);
-                }, 1500)
+                }, 1000)
     }, []);
 
 
-    //---Автокомплит---:
-    function autocomplete(val, arr) {
-        if (val === '') {
-          return [];
+
+    class DropDownMenu {
+
+        //---Автокомплит---:
+        static autocomplete(val, arr) {
+            if (val === '') {
+            return [];
+            }
+
+            var reg = new RegExp(`^${val}`, 'i');   //регулярка со значением из инпута
+            let result = arr.filter(item => item.name.match(reg));
+            return result;
         }
 
-        var reg = new RegExp(`^${val}`, 'i');   //регулярка со значением из инпута
-        let result = arr.filter(item => item.name.match(reg));
-        return result;
-    }
 
+        //---Выбор китайского города---:
+        static showChineseResults(value) {
+            const selectChinaCity_title = selectChinaCity.firstChild;
+            setChineseCity(value);
+            setPromptActive(false);
 
-    //---Выбор китайского города---:
-    function showChineseResults(value) {
-        const selectChinaCity_title = selectChinaCity.querySelector('.form__item--select__title');
-        
-        setChineseCity(value);
-        setPromptActive(false);
+            if (selectChinaCity.classList.contains('error')) {
+                selectChinaCity.classList.remove('error');
+            }
 
-        if (selectChinaCity.classList.contains('error')) {
-            selectChinaCity.classList.remove('error');
+            let elem = document.getElementById('chinese-results');  //блок с результатами
+            elem.innerHTML = '';
+            let list = '';
+
+            let shownItems = DropDownMenu.autocomplete(value, chineseCities.chineseCities);
+            
+            //Рисуем эл-ты:
+            for (let i = 0; i < shownItems.length; i++) {
+                const option = `
+                    <div class="select-item">
+                        <input type='radio' class='select__input' id='city-name'></input>
+                        <label for='city-name' className='select__label'>${shownItems[i].name}</label>
+                    </div>
+                `
+                list += option;
+            }
+            elem.innerHTML = `${list}`;
+
+            //Выпадающее меню:
+            selectChinaCity_title.oninput = () => {
+                selectChinaCity.classList.add('active');
+            }
+            //Закрываем по клику на опцию -> в стейт:
+            const selectChinaCity_items = selectChinaCity.querySelectorAll('.select-item');
+            
+            for (let i = 0; i < selectChinaCity_items.length; i++) {
+                selectChinaCity_items[i].addEventListener('click', (e) => {
+                    setChineseCity(e.currentTarget.textContent.trim());    //записываем в стейт
+                    selectChinaCity.classList.remove('active');
+                })
+            }
         }
 
-        let elem = document.getElementById('chinese-results');  //блок с результатами
-        elem.innerHTML = '';
-        let list = '';
 
-        let shownItems = autocomplete(value, chineseCities.chineseCities);
-        
-        //Рисуем эл-ты:
-        for (let i = 0; i < shownItems.length; i++) {
-            const option = `
-                <div class="select-item">
-                    <input type='radio' class='select__input' id='city-name'></input>
-                    <label for='city-name' className='select__label'>${shownItems[i].name}</label>
-                </div>
-            `
-            list += option;
-        }
-        elem.innerHTML = `${list}`;
-        
-        //Выпадающее меню:
-        selectChinaCity_title.oninput = () => {
-            selectChinaCity.setAttribute('data-state', 'active');
-        }
-
-        //Закрываем по клику на опцию и сохраняем в стейт:
-        const selectChinaCity_items = selectChinaCity.querySelectorAll('.select-item');
-        for (let i = 0; i < selectChinaCity_items.length; i++) {
-            selectChinaCity_items[i].addEventListener('click', (e) => {
-                setChineseCity(e.currentTarget.textContent.trim());    //записываем в стейт
-                selectChinaCity.setAttribute('data-state', '');
+        //---Выбор 'куда' и 'валюта'---:
+        static onChangeItems(toggleItem) {
+            const title = toggleItem.firstChild;
+            setPromptActive(false);     //деактивируем подсказку
+            //Выпадающее меню:
+            title.addEventListener('click', () => {
+                toggleItem.classList.contains('active') 
+                ?
+                toggleItem.classList.remove('active')
+                :
+                toggleItem.classList.add('active')
             })
         }
-    }
-    
 
 
-
-    //---Выбор куда---:
-    function onChangeRussianCity() {
-        setPromptActive(false);     //деактивируем подсказку
-        const selectRusCity_title = selectRusCity.querySelector('.form__item--select__title');
-
-        //Выпадающее меню:
-        selectRusCity_title.addEventListener('click', () => {
-            selectRusCity.setAttribute('data-state', 'active');
-        })
-    }
-    //Закрываем по клику на опцию и СОХРАНЕНИЕ В СТЕЙТ:
-    function onOptionRussian(item) {   //получаем выбранный айтем из списка русских городов
-        selectRusCity.setAttribute('data-state', '');
-        setRussianCity(item.name);
-    }
-
-
-
-
-    //---Выбор валюты и её курса---:
-    const onChangeCurrency = () => {
-        setPromptActive(false);     //деактивируем подсказку
-        const selectUsd_title = selectUsd.querySelector('.form__item--select__title');
-
-        //Выпадающее меню:
-        selectUsd_title.addEventListener('click', () => {
-                selectUsd.setAttribute('data-state', 'active');
-        })
-
-    }
-    //Закрываем по клику:
-    function onOptionCurrency(item) {   //получаем выбранный айтем из списка валют
-        selectUsd.setAttribute('data-state', '');
-        setCurrentCurrency(item.name);  //в стейт
-        setRate(item.rate); //меняем курс валюты:
-    }
-
-
-
-    //---Собираем выбранные данные, валидация и переход далее---:
-    const onToSelect = () => {
-        const selectedOptions = {       //собираем выбранные данные
-            from: currentChineseCity,
-            to: currentRussianCity,
-            currency: currentCurrency
+        //Закрываем по клику на опцию -> в стейт:
+        static onOptionRussian(item) {   //куда
+            selectRusCity.classList.remove('active');
+            setRussianCity(item.name);
         }
-        options.setOptions(selectedOptions);    //записываем в miniForm глобальное хранилище
+        static onOptionCurrency(item) {   //валюта
+            selectUsd.classList.remove('active');
+            setCurrentCurrency(item.name);
 
-        if(currentChineseCity === '') {         //заполнено ли поле
-            selectChinaCity.classList.add('error');
-            document.getElementById('valid-error').classList.remove('hidden');
-        } else {
-            selectChinaCity.classList.remove('.error');
-            localStorage.setItem('selectItem', JSON.stringify(selectedOptions));
-            history.push('/select');
+            setRate(item.rate); //меняем курс валюты
+        }
+
+
+        //---Собираем выбранные данные, валидация и переход далее---:
+        static onToSelect() {
+            //Проверка корректности названия города
+            let isCorrect = false;
+            for(let item of chineseCities.chineseCities) {
+                if(currentChineseCity === item.name) {
+                    isCorrect = true;
+                }
+            }
+            //Собираем данные из формы:
+            const selectedOptions = {
+                from: currentChineseCity,
+                to: currentRussianCity,
+                currency: currentCurrency
+            }
+            options.setOptions(selectedOptions);    //записываем в miniForm глобальное хранилище
+
+            //Rорректно ли заполнено поле:
+            if(currentChineseCity === '' || !isCorrect) {
+                selectChinaCity.classList.add('error');
+                document.getElementById('valid-error').classList.remove('hidden');
+            } else {
+                selectChinaCity.classList.remove('error');
+
+                localStorage.setItem('selectItem', JSON.stringify(selectedOptions));
+                history.push('/select');
+            }
         }
     }
 
@@ -165,13 +164,13 @@ const MiniForm = observer(() => {
     return (
         <div>
             <div className='form-container'>
-                <form className='form'>
+                <form className='form' id='form'>
 
                     {/**Откуда: */}
                     <div className='form__item' id='form__item--from' data-state=''>
                         <input 
                             value={currentChineseCity} 
-                            onChange={e => showChineseResults(e.currentTarget.value)}  
+                            onChange={e => DropDownMenu.showChineseResults(e.currentTarget.value)}  
                             type='text'
                             className='form__item--select__title'
                         ></input>
@@ -180,7 +179,7 @@ const MiniForm = observer(() => {
 
 
                     {/**Куда: */}
-                    <div onClick={onChangeRussianCity} className='form__item' id='form__item--to' data-state=''>
+                    <div onClick={() => DropDownMenu.onChangeItems(selectRusCity)} className='form__item' id='form__item--to' data-state=''>
                         <div className='form__item--select__title'>  {/**главный блок с названием*/}
                             {currentRussianCity}
                         </div>
@@ -190,7 +189,7 @@ const MiniForm = observer(() => {
                                 return (
                                     <div className='select-item' key={item.id}>
                                         <input id="select0" className='select__input' type="radio"/>
-                                        <label onClick={() => onOptionRussian(item)} htmlFor="select0" className='select__label'>{item.name}</label>
+                                        <label onClick={() => DropDownMenu.onOptionRussian(item)} htmlFor="select0" className='select__label'>{item.name}</label>
                                     </div>
                                 )
                             })}
@@ -199,7 +198,7 @@ const MiniForm = observer(() => {
 
 
                     {/**Валюта: */}
-                    <div onClick={onChangeCurrency} className='form__item' id='form__item--usd' data-state=''>
+                    <div onClick={() => DropDownMenu.onChangeItems(selectUsd)} className='form__item' id='form__item--usd' data-state=''>
                         <div className='form__item--select__title'>  {/**главный блок с названием*/}
                             {currentCurrency}
                         </div>
@@ -209,7 +208,7 @@ const MiniForm = observer(() => {
                                 return (
                                     <div className='select-item' key={item.id}>
                                         <input id="select0" className='select__input' type="radio"/>
-                                        <label onClick={() => onOptionCurrency(item)} htmlFor="select0" className='select__label'>{item.name}</label>
+                                        <label onClick={() => DropDownMenu.onOptionCurrency(item)} htmlFor="select0" className='select__label'>{item.name}</label>
                                     </div>
                                 )
                             })}
@@ -224,9 +223,9 @@ const MiniForm = observer(() => {
                 </form>
 
 
-                <button onClick={onToSelect} type='submit' className='form__nextBtn'> Далее <img src={whiteArrow} alt='/'/></button>
+                <button onClick={DropDownMenu.onToSelect} type='submit' className='form__nextBtn'> Далее <img src={whiteArrow} alt='/'/></button>
             </div>
-            <div className='valid-error hidden' id='valid-error'><p>заполните поле</p></div>
+            <div className='valid-error hidden' id='valid-error'><p>выберите город</p></div>
 
 
             <Prompt active={promptActive} setActive={setPromptActive}/>

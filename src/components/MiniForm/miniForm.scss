@@ -52,7 +52,7 @@
                     color: $grey;
                 }
 
-                &[data-state="active"] {
+                &.active {
                     .select__title {
                       &::before {
                         transform: translate(-3px, -50%) rotate(-45deg);
@@ -232,7 +232,6 @@
 }
 
 .valid-error {
-    // display: none;
     font-size: 0.9rem;
     font-family: 'Roboto';
 

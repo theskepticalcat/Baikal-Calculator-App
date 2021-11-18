@@ -49,6 +49,7 @@ button {
 
 input {
     box-shadow: none;
+    font-size: 1.1rem;
 
     ::placeholder {
         color: $light-grey;
@@ -72,12 +73,12 @@ li {
 //Стили кнопок:
 .btn {
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     font-family: 'Open Sans';
 
     &__search {
         width: 8.1em;
-        height: 3.7em;
+        height: 4em;
 
         @include breakpoint($tablet-bp) {
             display: none;

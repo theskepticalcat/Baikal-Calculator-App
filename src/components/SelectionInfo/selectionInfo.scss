@@ -8,26 +8,17 @@
 }
 
 .info {
-    margin-top: -11em;
-    margin-right: 8em;
-
-    &__header {
-        font-family: 'Open Sans';
-        font-weight: 400;
-        font-size: 2.5rem;
-
-        text-align: start;
-        margin-bottom: 2.3em;
-    }
-
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
 
     &__empty{
         display: flex;
         justify-content: center;
-        margin-right: 5em;
             
         p {
-            font-size: 2.6rem;
+            font-size: 2rem;
             margin: auto;
         }
 
@@ -44,14 +35,15 @@
     &__selected-item {
         display: flex;
         align-items: center;
+        font-size: 1.2rem;
 
-        width: 28.8em;
-        height: 5em;
+        width: 25em;
+        height: 4em;
         border-radius: 3px;
         background-color: #F8FAFF;
 
         img {
-            width: 7em;
+            width: 5em;
             height: 100%;
         }
 

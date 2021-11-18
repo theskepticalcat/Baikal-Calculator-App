@@ -17,6 +17,10 @@ const Selected = observer(() => {
     const history = useHistory();
 
 
+    const selectedItems = JSON.parse(localStorage.getItem('selectedItem'));
+    console.log(selectedItems);
+
+
     //Обработчики для подсказок:
     const hideTipEdit = () => {
         const tip = document.querySelector('.selected__tip-edit');
@@ -45,7 +49,7 @@ const Selected = observer(() => {
                 <div>
                     <p className='selected__title'>
                         Добавленная мебель
-                        <span className='selected__items-num'>({furniture.selectedFurniture.length})</span>
+                        <span className='selected__items-num'>{` (${furniture.selectedFurniture.length})`}</span>
                     </p>
                 </div>
                 <div className='selected__tip selected__tip-edit'>
@@ -73,7 +77,7 @@ const Selected = observer(() => {
             {/* Выбранные элементы мебели */}
             <div className='selected-items'>
                 {furniture.selectedFurniture.map(item => 
-                    <table>
+                    <table key={item.id}>
                         <tr>
                             <td className='description-img'><img src={sofaImg} alt='img'/></td>
                             <td className='description-name'><p>{item.name}</p></td>

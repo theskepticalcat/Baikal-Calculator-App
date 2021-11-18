@@ -23,7 +23,7 @@ const SendOptions = () => {
          <div onClick={onActive} className='options' id='options'>
             <p>{selectedOptions.from}</p>
             <div><img src={arrowRightSvg} alt="/" /></div>
-            <p>{selectedOptions.to}{`, `}</p>
+            <p>{`${selectedOptions.to}, `}</p>
             <p>{selectedOptions.currency}</p>
 
             {active === true && <div className='options__pen'><img src={penSvg} alt='change'/></div>}

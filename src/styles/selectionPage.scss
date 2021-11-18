@@ -1,70 +1,82 @@
 @import './mixin.scss';
 @import './vars.scss';
 
+
+.selection__header {
+    display: grid;
+    grid-template-columns: 5fr 4fr;
+    padding: 11.7em 6.9em 1em 6.9em;
+    p {
+        font-family: 'Open Sans';
+        font-weight: 400;
+        font-size: 2.5rem;
+
+        text-align: start;
+    }
+
+    @include breakpoint($tablet-bp) {
+        display: none;
+    }
+}
+
 .selection {
-    margin: 9.7em 6.9em;
-    align-self: start;
-    width: 100%;
-
-    &__header {
-        display: block;
-        p {
-            font-family: 'Open Sans';
-            font-weight: 400;
-            font-size: 2.5rem;
-
-            text-align: start;
-        }
-
-        @include breakpoint($tablet-bp) {
-            display: none;
-        }
-    }
-
-    &__search {
-        display: flex;
-        align-items: center;
-        margin-top: 32px;
-        width: 35em;
-
-        &--input {
-            width: 26em;
-            height: 4.2em;
-            margin-right: 8px;
-            padding-left: 15px;
-
-            @include breakpoint($tablet-bp) {
-                width: 80vw;
-                margin-right: 0;
-
-                background-color: transparent;
-                border-bottom: 1.5px solid $light-grey;
-            }
-        }
-
-        @include breakpoint($tablet-bp) {
-            width: 100vw;
-            margin-top: 10em;
-            margin-bottom: 1.4em;
-        }
-    }
+    //display: flex;
+    display: grid;
+    grid-template-columns: 5fr 4fr;
+    padding: 0 6.9em;
+    margin: auto;
 
     .selection__wrap {
         display: flex;
-        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 50%;
+        margin-right: 10em;
+
+        .selection__search {
+            display: flex;
+            align-items: center;
+            margin-top: 2em;
+    
+            &--input {
+                width: 26em;
+                height: 4em;
+                margin-right: 8px;
+                padding-left: 15px;
+    
+                @include breakpoint($tablet-bp) {
+                    width: 80vw;
+                    margin-right: 0;
+    
+                    background-color: transparent;
+                    border-bottom: 1.5px solid $light-grey;
+                }
+            }
+    
+            @include breakpoint($tablet-bp) {
+                width: 100vw;
+                margin-top: 10em;
+                margin-bottom: 1.4em;
+            }
+        }
 
         .selection__items {
             display: flex;
             flex-direction: column;
     
-            margin: 2.7em 0 0 0;
-            height: 29em;
+            margin-top: 3em;
+            max-height: 33em;
+            min-width: 50em;
     
             overflow: scroll;
             -ms-overflow-style: none;
 
             &::-webkit-scrollbar {
                 display: none;
+            }
+
+            &--name {
+                margin: auto 1em;
             }
     
             &--item {
@@ -74,10 +86,7 @@
 
                 font-family: 'Open Sans';
                 font-weight: 400;
-                font-size: 1.8rem;
-
-                width: 40em;
-                height: 7em;
+                font-size: 1.5rem;
     
                 background-color: #F8FAFF;
                 padding-right: 1.2em;
@@ -88,11 +97,7 @@
                 margin: 0 0 4px 0;
 
                 img {
-                    height: 100%;
-                }
-    
-                &--name {
-                    margin: auto;
+                    height: 5em;
                 }
 
                 @include breakpoint($tablet-bp) {
@@ -104,12 +109,16 @@
                 width: 100vw;
                 height: 100vh;
                 margin-top: 0;
+
+                min-height: 100vh;
+                min-width: 50em;
             }
         }
 
         @include breakpoint($tablet-bp) {
-            width: 100vw;
             height: 100vh;
+            margin: 0;
+            width: 100%;
         }
     }
 

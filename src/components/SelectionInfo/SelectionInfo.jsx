@@ -15,7 +15,7 @@ const SelectionInfo = observer(({selectedItem}) => {    //передали пр�
     const {furniture} = useContext(Context);
     console.log(selectedItem);
 
-    const [isSelected, setSelected] = useState(selectedItem);   //стэйт отображения выбранного айтема мебели
+    //const [isSelected, setSelected] = useState();   //стэйт отображения выбранного айтема мебели
     const [total, setTotal] = useState(1);
 
 
@@ -31,23 +31,21 @@ const SelectionInfo = observer(({selectedItem}) => {    //передали пр�
     }
 
 
+    //---Добавление выбранной мебели в глобальное хранилище:
     const addSelectedItem = () => {
-        console.log('hehe');
+        furniture.setSelectedFurniture(selectedItem);
     }
 
 
     return (
         <div className='wrap'>
-        {isSelected === selectedItem
+        {!selectedItem
             ? 
             <div className='info__empty'>
                 {furniture.selectedFurniture.length > 0 ? <p>Выберете еще элемент</p> : <p>Вы не выбрали пока ни одного элемента.</p>}
             </div>
             :
             <div className='info' id='info'>
-                <div className='info__header'>
-                    <p>Затем заполните следующие<br></br>поля выбранного элемента:</p>
-                </div>
                 <div className='info__selected-item'>
                     <img src={selectedItemImg} alt='/' />
                     <p>{selectedItem.name}</p>
