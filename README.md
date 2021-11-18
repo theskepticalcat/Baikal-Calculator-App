@@ -1,6 +1,4 @@
-# Calculator (рассчёта стоимости доставки из Китая)
+# Calculator
 React (React Router)
 
 MobX
-
-https://chinesecalculator.herokuapp.com/main
