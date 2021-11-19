@@ -4,7 +4,10 @@ import { observer } from 'mobx-react-lite';
 import { useHistory } from 'react-router-dom';
 
 import Prompt from '../Prompt/Prompt';
+import autocomplete from '../../utils/autocomplete';
+
 import whiteArrow from '../../assets/images/white-arrow-right.svg';
+import miniArrowImg from '../../assets/images/smallArrowDown.svg';
 
 import './miniForm.scss';
 
@@ -27,11 +30,10 @@ const MiniForm = observer(() => {
     const history = useHistory();
 
 
-    //Лезем в DOM
+    //Лезем в DOM:
     const selectChinaCity = document.getElementById('form__item--from');
     const selectRusCity = document.getElementById('form__item--to');
     const selectUsd = document.getElementById('form__item--usd');
-
 
 
     //Появление подсказки:
@@ -42,20 +44,7 @@ const MiniForm = observer(() => {
     }, []);
 
 
-
     class DropDownMenu {
-
-        //---Автокомплит---:
-        static autocomplete(val, arr) {
-            if (val === '') {
-            return [];
-            }
-
-            var reg = new RegExp(`^${val}`, 'i');   //регулярка со значением из инпута
-            let result = arr.filter(item => item.name.match(reg));
-            return result;
-        }
-
 
         //---Выбор китайского города---:
         static showChineseResults(value) {
@@ -71,7 +60,7 @@ const MiniForm = observer(() => {
             elem.innerHTML = '';
             let list = '';
 
-            let shownItems = DropDownMenu.autocomplete(value, chineseCities.chineseCities);
+            let shownItems = autocomplete(value, chineseCities.chineseCities);
             
             //Рисуем эл-ты:
             for (let i = 0; i < shownItems.length; i++) {
@@ -101,32 +90,30 @@ const MiniForm = observer(() => {
         }
 
 
+
         //---Выбор 'куда' и 'валюта'---:
         static onChangeItems(toggleItem) {
-            const title = toggleItem.firstChild;
             setPromptActive(false);     //деактивируем подсказку
             //Выпадающее меню:
-            title.addEventListener('click', () => {
-                toggleItem.classList.contains('active') 
-                ?
-                toggleItem.classList.remove('active')
-                :
-                toggleItem.classList.add('active')
-            })
+            toggleItem.classList.contains('active') 
+            ?
+            toggleItem.classList.remove('active')
+            :
+            toggleItem.classList.add('active');
         }
+
 
 
         //Закрываем по клику на опцию -> в стейт:
-        static onOptionRussian(item) {   //куда
-            selectRusCity.classList.remove('active');
+        static onOptionRussian(item) {
             setRussianCity(item.name);
         }
-        static onOptionCurrency(item) {   //валюта
-            selectUsd.classList.remove('active');
-            setCurrentCurrency(item.name);
 
+        static onOptionCurrency(item) {
+            setCurrentCurrency(item.name);
             setRate(item.rate); //меняем курс валюты
         }
+
 
 
         //---Собираем выбранные данные, валидация и переход далее---:
@@ -180,18 +167,16 @@ const MiniForm = observer(() => {
 
                     {/**Куда: */}
                     <div onClick={() => DropDownMenu.onChangeItems(selectRusCity)} className='form__item' id='form__item--to' data-state=''>
-                        <div className='form__item--select__title'>  {/**главный блок с названием*/}
-                            {currentRussianCity}
-                        </div>
+                        <div>{currentRussianCity} <img src={miniArrowImg} alt='open'/></div>
 
                         <div className='form__item--select__content'>
                             {russianCities.russianCities.map(item => {
-                                return (
-                                    <div className='select-item' key={item.id}>
-                                        <input id="select0" className='select__input' type="radio"/>
-                                        <label onClick={() => DropDownMenu.onOptionRussian(item)} htmlFor="select0" className='select__label'>{item.name}</label>
-                                    </div>
-                                )
+                                    return (
+                                        <div onClick={() => DropDownMenu.onOptionRussian(item)} key={item.id} className='select-item'>
+                                            <input className='select__input' type="radio"/>
+                                            <p className='select__label'>{item.name}</p>
+                                        </div>
+                                    )
                             })}
                        </div>
                     </div>
@@ -199,16 +184,14 @@ const MiniForm = observer(() => {
 
                     {/**Валюта: */}
                     <div onClick={() => DropDownMenu.onChangeItems(selectUsd)} className='form__item' id='form__item--usd' data-state=''>
-                        <div className='form__item--select__title'>  {/**главный блок с названием*/}
-                            {currentCurrency}
-                        </div>
+                        <div>{currentCurrency} <img src={miniArrowImg} alt='open'/></div>
 
                        <div className='form__item--select__content'>
                             {currency.currency.map(item => {
                                 return (
-                                    <div className='select-item' key={item.id}>
-                                        <input id="select0" className='select__input' type="radio"/>
-                                        <label onClick={() => DropDownMenu.onOptionCurrency(item)} htmlFor="select0" className='select__label'>{item.name}</label>
+                                    <div onClick={() => DropDownMenu.onOptionCurrency(item)} key={item.id} className='select-item'>
+                                        <input className='select__input' type="radio"/>
+                                        <p className='select__label'>{item.name}</p>
                                     </div>
                                 )
                             })}

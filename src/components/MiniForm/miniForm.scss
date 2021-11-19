@@ -72,6 +72,10 @@
                     }
                 }
 
+                img {
+                    opacity: .5;
+                    margin-left: 0.5em;
+                }
 
                 &--select__title {
                     display: flex;
@@ -81,28 +85,6 @@
                     padding: 8px 16px;
                     
                     cursor: pointer;
-                  
-                    &::before,
-                    &::after {
-                      content: "";
-
-                      display: block;
-                      position: absolute;
-                      top: 50%;
-                      right: 16px;
-                  
-                      width: 10px;
-                      height: 2px;
-                      opacity: 0.3;
-                      color: $light-grey;
-                  
-                      background-color: #333333;
-                      transition: all 0.3s ease-out;
-                      transform: translate(-3px, -50%) rotate(45deg);
-                    }
-                    &::after {
-                      transform: translate(3px, -50%) rotate(-45deg);
-                    }
                 }
 
 
