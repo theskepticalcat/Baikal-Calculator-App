@@ -53,6 +53,8 @@ const Selected = observer(() => {
 
         const calculatedTotal = furniture.selectedFurniture.reduce((sum, item) => sum + item.price*item.total, 0);
         setTotal(calculatedTotal);
+
+        window.scrollTo(0,document.body.scrollHeight);
     }
 
 
