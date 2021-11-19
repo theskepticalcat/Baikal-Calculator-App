@@ -1,4 +1,4 @@
-# Calculator (рассчёта стоимости доставки из Китая)
-React (useState, React Router)
+# Calculator
+React (React Router)
 
 MobX
