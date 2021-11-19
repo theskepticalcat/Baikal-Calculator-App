@@ -3,6 +3,8 @@ import { Context } from '..';
 import { observer } from 'mobx-react-lite';
 import { useHistory } from 'react-router-dom';
 
+import Calculate from '../components/Calculate/Calculate';
+
 import closeImg from './../assets/images/red-close.svg';
 import sofaImg from './../assets/images/coach.png';
 import removeImg from './../assets/images/red-big-delete.svg';
@@ -10,15 +12,15 @@ import arrowDownImg from './../assets/images/blue-arrow-down.svg';
 import arrowRightImg from './../assets/images/blue-arrow-right.svg';
 
 import './../styles/selected.scss';
+import { useState } from 'react';
 
 
 const Selected = observer(() => {
     const {furniture} = useContext(Context);
     const history = useHistory();
+    const[total, setTotal] = useState('');
 
-
-    const selectedItems = JSON.parse(localStorage.getItem('selectedItem'));
-    console.log(selectedItems);
+    //const selectedItems = JSON.parse(localStorage.getItem('selectedItem'));
 
 
     //Обработчики для подсказок:
@@ -40,6 +42,17 @@ const Selected = observer(() => {
     const removeItem = (item) => {
         const newSelectedFurniture = furniture.selectedFurniture.filter(i => i.id !== item.id);
         furniture.resetSelected(newSelectedFurniture);
+    }
+
+
+    //Итоговый рассчёт:
+    const calculation = () => {
+        document.body.classList.add('overflow');
+        document.getElementById('calculate').classList.remove('hidden');
+        document.getElementById('header').classList.add('blueBackground');
+
+        const calculatedTotal = furniture.selectedFurniture.reduce((sum, item) => sum + item.price*item.total, 0);
+        setTotal(calculatedTotal);
     }
 
 
@@ -112,10 +125,12 @@ const Selected = observer(() => {
                     </div>
 
                     <button onClick={() => history.push('/select')} type='submit' className='btn btn__blue btn__submit'>Добавить</button>
-                    <button type='submit' className='btn btn__blue btn__submit'>Рассчитать</button>
+                    <button onClick={calculation} type='submit' className='btn btn__blue btn__submit'>Рассчитать</button>
                 </div>
             </div>
 
+
+            <Calculate total={total}/>
         </div>
     )
 })

@@ -50,6 +50,10 @@
                     font-size: 1em;
                     font-weight: 500;
                     color: $grey;
+
+                    @include breakpoint($tablet-bp) {
+                        text-align: center;
+                    }
                 }
 
                 &.active {
@@ -194,7 +198,7 @@
                 width: 335px;
                 height: 55px;
         
-                margin: 24px auto;
+                margin: 7em auto;
             }
         }
 
@@ -202,6 +206,7 @@
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr 1fr;
             grid-gap: 20px 10px;
+            background-color: transparent;
         }
     }
 
@@ -210,6 +215,7 @@
         justify-content: center;
         align-items: center;
         max-width: 335px;
+        margin: auto;
     }
 }
 
@@ -222,5 +228,9 @@
     p {
         color: red;
         opacity: .8;
+    }
+
+    @include breakpoint($tablet-bp) {
+        display: none;
     }
 }

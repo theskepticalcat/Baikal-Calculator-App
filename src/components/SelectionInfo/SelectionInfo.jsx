@@ -13,7 +13,6 @@ import { Context } from '../..';
 
 const SelectionInfo = observer(({selectedItem}) => {    //передали пропсом выбранный айтем из SelectionPage.jsx
     const {furniture} = useContext(Context);
-    console.log(selectedItem);
 
     //const [isSelected, setSelected] = useState();   //стэйт отображения выбранного айтема мебели
     const [total, setTotal] = useState(1);

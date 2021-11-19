@@ -17,7 +17,7 @@ const Header = observer(() => {
 
 
     return (
-        <div className='header'>
+        <div className='header' id='header'>
 
             <div className='header__logoAndOptions'>
                 <Link to="/main">

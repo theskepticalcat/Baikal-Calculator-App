@@ -67,7 +67,7 @@ const MiniForm = observer(() => {
                 const option = `
                     <div class="select-item">
                         <input type='radio' class='select__input' id='city-name'></input>
-                        <label for='city-name' className='select__label'>${shownItems[i].name}</label>
+                        ${shownItems[i].name}
                     </div>
                 `
                 list += option;

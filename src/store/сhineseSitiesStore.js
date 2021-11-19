@@ -45,7 +45,7 @@ export default class ChineseCitiesStore {
             },
             {
                 id: 11,
-                name: "Пинглианг"
+                name: "Путьянь"
             }
         ]
 

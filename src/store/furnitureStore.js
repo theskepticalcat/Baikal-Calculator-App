@@ -91,12 +91,11 @@ export default class FurnitureStore {
     }
 
     get selectedFurniture() {
-        //return this._selectedFurniture;  //как получить только уникальные значения из этого об-кта?
         var unique = Array.from(new Set(this._selectedFurniture.map(JSON.stringify))).map(JSON.parse);
         return unique;
     }
 
-    resetSelected(arr) {    //экшен обновления всего массива с эл-тами при удалении элемента
+    resetSelected(arr) {    //экшен обновления списка выбранной мебели при удалении элемента
         this._selectedFurniture = arr;
     }
 }

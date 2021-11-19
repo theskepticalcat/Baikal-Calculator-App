@@ -75,7 +75,7 @@
             height: 100%;
 
             text-align: center;
-            padding: 1em 0;
+            padding: 1.3em;
         }
 
         &--btns {
@@ -92,6 +92,7 @@
             button {
                 border-radius: 0;
                 box-shadow: none;
+                padding: auto;
                 background-color: rgb(252, 252, 252);
             }
         }
