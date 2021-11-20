@@ -40,7 +40,7 @@ const MiniForm = observer(() => {
     useEffect(() => {
         setTimeout(() => {
                 setPromptActive(true);
-                }, 1000)
+                }, 500)
     }, []);
 
 
@@ -50,6 +50,7 @@ const MiniForm = observer(() => {
         static showChineseResults(value) {
             const selectChinaCity_title = selectChinaCity.firstChild;
             setChineseCity(value);
+            console.log(currentChineseCity);
             setPromptActive(false);
 
             if (selectChinaCity.classList.contains('error')) {
@@ -75,9 +76,8 @@ const MiniForm = observer(() => {
             elem.innerHTML = `${list}`;
 
             //Выпадающее меню:
-            selectChinaCity_title.oninput = () => {
-                selectChinaCity.classList.add('active');
-            }
+            selectChinaCity.classList.add('active');
+
             //Закрываем по клику на опцию -> в стейт:
             const selectChinaCity_items = selectChinaCity.querySelectorAll('.select-item');
             
@@ -157,7 +157,7 @@ const MiniForm = observer(() => {
                     <div className='form__item' id='form__item--from' data-state=''>
                         <input 
                             value={currentChineseCity} 
-                            onChange={e => DropDownMenu.showChineseResults(e.currentTarget.value)}  
+                            onChange={e => DropDownMenu.showChineseResults(e.target.value)}
                             type='text'
                             className='form__item--select__title'
                         ></input>
