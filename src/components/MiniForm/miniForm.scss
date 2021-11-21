@@ -94,7 +94,7 @@
 
                 &--select__content {
                     position: absolute;
-                    top: 51px;
+                    top: 52px;
                   
                     display: flex;
                     flex-direction: column;
@@ -148,6 +148,10 @@
 
                     @include breakpoint($tablet-bp) {
                         top: 45px; 
+                    }
+
+                    @media screen and (min-width: $desktop-bp) {
+                        top: 60px;
                     }
 
                     :hover {

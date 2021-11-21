@@ -7,7 +7,6 @@ import SendOptions from '../SendOptions/SendOptions';
 import './header.scss';
 
 import logo from '../../assets/images/Logo.png';
-import burger from '../../assets/images/burger.svg';
 
 
 
@@ -36,9 +35,6 @@ const Header = observer(() => {
             <div className='header__btn'>
                 <Link to="/contacts">
                     <button className='btn btn__white'>Связаться</button>
-                </Link>
-                <Link to="/contacts">
-                    <div className='header__btn--burger'><img src={burger} alt="contacts" /></div>
                 </Link>
             </div>
         </div>

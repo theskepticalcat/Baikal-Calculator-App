@@ -1,6 +1,4 @@
-import React, { useContext, useState } from 'react';
-import { observer } from 'mobx-react-lite';
-import { Context } from '../..';
+import React, { useState } from 'react';
 
 import './sendOptions.scss';
 import arrowRightSvg from './../../assets/images/arrow-right-grey.svg';
@@ -10,7 +8,6 @@ const SendOptions = () => {
     const [active, setActive] = useState(false);
 
     const selectedOptions = JSON.parse(localStorage.getItem('selectItem'));
-
 
 
     const onActive = () => {

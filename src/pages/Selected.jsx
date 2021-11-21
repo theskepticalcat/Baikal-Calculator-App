@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import Calculate from '../components/Calculate/Calculate';
 
 import closeImg from './../assets/images/red-close.svg';
-import sofaImg from './../assets/images/coach.png';
+import sofaImg from './../assets/images/sofa.png';
 import removeImg from './../assets/images/red-big-delete.svg';
 import arrowDownImg from './../assets/images/blue-arrow-down.svg';
 import arrowRightImg from './../assets/images/blue-arrow-right.svg';
@@ -17,10 +17,11 @@ import { useState } from 'react';
 
 const Selected = observer(() => {
     const {furniture} = useContext(Context);
+    
     const history = useHistory();
     const[total, setTotal] = useState('');
 
-    //const selectedItems = JSON.parse(localStorage.getItem('selectedItem'));
+    const selectItem = JSON.parse(localStorage.getItem('selectItem'));
 
 
     //Обработчики для подсказок:
@@ -100,7 +101,7 @@ const Selected = observer(() => {
                             <td className='description-2 description'><p>23</p></td>
                             <td className='description-3 description'><p>26</p></td>
                             <td className='description-4 description'><p>2</p></td>
-                            <td className='description-5 description'><p>{item.price} руб.</p></td>
+                            <td className='description-5 description'><p>{`${Math.ceil(item.price/selectItem.rate)} ${selectItem.currency}`}</p></td>
                             <td className='description-6 description'>
                                 <button onClick={() => removeItem(item)} className='selected-items--remove' type='button'><img src={removeImg} alt='remove'/></button>
                             </td>

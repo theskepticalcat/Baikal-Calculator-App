@@ -23,18 +23,11 @@
         @include breakpoint($tablet-bp) {
             padding: 10px;
         }
-
-        &--burger {
-            display: none;
-    
-            @include breakpoint($tablet-bp) {
-                display: inline-block;
-            }
-        }
     }
 
     @include breakpoint($tablet-bp) {
         padding: 24px 20px;
+        background-color: $light-blue;
     }
 
     .btn__white {
@@ -52,10 +45,6 @@
         &:hover {
             background-color: #5DAAFF;
             color: white;
-        }
-    
-        @include breakpoint($tablet-bp) {
-            display: none;
         }
     }
 }

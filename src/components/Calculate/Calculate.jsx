@@ -2,6 +2,8 @@ import React from 'react';
 import './calculate.scss';
 
 const Calculate = ({total}) => {
+    const selectItem = JSON.parse(localStorage.getItem('selectItem'));
+    
     return (
         <div className='calculate hidden' id='calculate'>
             <div className='calculate__details'>
@@ -13,9 +15,9 @@ const Calculate = ({total}) => {
             <div className='calculate__total'>
                 {total
                 ?
-                <p>Итого: {total + 5000 + 500} руб</p>
+                <p>Итого: {`${Math.ceil(total / selectItem.rate + 5000 + 500)} ${selectItem.currency}`}</p>
                 :
-                <p>Итого: {total} руб</p>
+                <p>Итого: {`${total} ${selectItem.currency}`}</p>
                 }
             </div>
             <div>

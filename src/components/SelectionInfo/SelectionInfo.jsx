@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 
 import './selectionInfo.scss';
 
-import selectedItemImg from './../../assets/images/coach.png';
+import selectedItemImg from './../../assets/images/sofa.png';
 import add from './../../assets/images/blue-add.svg';
 import reduce from './../../assets/images/blue-reduce.svg';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
@@ -13,9 +13,8 @@ import { Context } from '../..';
 
 const SelectionInfo = observer(({selectedItem}) => {    //передали пропсом выбранный айтем из SelectionPage.jsx
     const {furniture} = useContext(Context);
-
-    //const [isSelected, setSelected] = useState();   //стэйт отображения выбранного айтема мебели
     const [total, setTotal] = useState(1);
+    const selectItem = JSON.parse(localStorage.getItem('selectItem'));
 
 
     //Увеличение и уменьшение количества штук:
@@ -64,7 +63,7 @@ const SelectionInfo = observer(({selectedItem}) => {    //передали пр�
                     <input className='info__specifications-item' placeholder={`Общий объем: ${selectedItem.m3} м3`} disabled></input>
                     <input className='info__specifications-item' placeholder={`Общая масса нетто: ${selectedItem.netweight} кг`} disabled></input>
                     <input className='info__specifications-item' placeholder={`Общая масса брутто: ${selectedItem.grossweight} кг`} disabled></input>
-                    <input className='info__specifications-item' placeholder={`Стоимость одной единицы: ${selectedItem.price}`} disabled></input>
+                    <input className='info__specifications-item' placeholder={`Стоимость одной единицы: ${Math.ceil(selectedItem.price / selectItem.rate)}`} disabled></input>
                 </div>
 
                 <form>

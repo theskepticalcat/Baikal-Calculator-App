@@ -7,66 +7,89 @@ const ContactForm = () => {
     const [mail, setMail] = useState('');
     const [phone, setPhone] = useState('');
 
-    const [error, setError] = useState('');
+    const [nameError, setNameError] = useState('');
+    const [mailError, setMailError] = useState('');
+    const [phoneError, setPhoneError] = useState('');
 
     const [formValid, setFormValid] = useState(false);
-    
+    console.log(formValid);
+
+
 
     useEffect(() => {
-        if(error) {
+        if(nameError || mailError || phoneError) {
             setFormValid(false);
-        } else {
+        }
+        if(nameError !== '' || mailError !== '' || phoneError !== '') {
             setFormValid(true);
         }
-    }, [error]);
+    }, [nameError, mailError, phoneError]);
 
+    
 
-    //Проверка инпута с именем:
+    //Проверка имени:
     const inputHandlerName = (e) => {
-        if (!e.target.value) {
-            setError('* Введите имя');
-        } else {
-            setError('');
-        }
         setName(e.target.value);
+        name.length > 0 ? setNameError('') : setNameError('*Введите имя');
     }
 
-    //Проверка инпута с почтой:
+    //Проверка почты:
     const inputHandlerMail = (e) => {
-        if (e.target.value.length < 5) {
-            setError('* Введите почту');
-        } else {
-            setError ('');
-        }
         setMail(e.target.value.toLowerCase());
+        const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+        mail.match(reg) ? setMailError('') : setMailError('* Введите почту');
     }
 
-    //Проверка инпута с телефоном:
+    //Проверка телефона:
     const inputHandlerPhone = (e) => {
-        if(e.target.value.length < 6) {
-            setError('* Введите номер телефона');
-        }
-        if(e.target.value.length > 12) {
-            setError('* Введите корректный номер');
-        }
         setPhone(e.target.value);
-        setError('');
+        phone.length > 5 ? setPhoneError('') : setPhoneError('* Введите номер телефона');
     }
 
 
     return (
         <form className='contact-form'>
             <div className='contact-form__inputs'>
-                <input value={name} onChange={e => inputHandlerName(e)} type='text' placeholder='Имя и фамилия'></input>
-                <input value={mail} onChange={e => inputHandlerMail(e)} type='text' placeholder='Почта'></input>
-                <input value={phone} onChange={e => inputHandlerPhone(e)} type='tel' placeholder='Телефон'></input>
+                <div>
+                    <input 
+                        value={name} 
+                        onChange={e => inputHandlerName(e)}
+                        type='text'
+                        pattern="[a-zA-Z]){2,40}"
+                        placeholder='Имя и фамилия'
+                        >
+                    </input>
+                    <p style={{color:'red'}}>{nameError}</p>
+                </div>
+
+                <div>
+                    <input 
+                        value={mail} 
+                        onChange={e => inputHandlerMail(e)}
+                        type='email' 
+                        placeholder='Почта'
+                        >
+                    </input>
+                    <p style={{color:'red'}}>{mailError}</p>
+                </div>
+
+                <div>
+                    <input 
+                        value={phone} 
+                        onChange={e => inputHandlerPhone(e)}
+                        type='tel' 
+                        placeholder='Телефон'
+                        >
+                    </input>
+                    <p style={{color:'red'}}>{phoneError}</p>
+                </div>
             </div>
-            <p style={{color:'red'}}>{error}</p>
 
             <div className='contact-form__textarea'>
                 <p className='contact-form__textarea--inscription'>Опишите ваш запрос</p>
                 <textarea></textarea>
-                <button disabled={!formValid} className='btn btn__whide btn__blue' type='submit'>Связаться по доставке</button>
+                <button disabled={!formValid} className='btn btn__whide btn__blue' id='submitBtn' type='submit'>Связаться по доставке</button>
                 <p>Нажимая на кнопку, вы даете <Link><strong>согласие на обработку</strong></Link><br></br>своих персональных данных</p>
             </div>
         </form>

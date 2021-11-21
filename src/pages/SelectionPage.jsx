@@ -4,7 +4,7 @@ import autocomplete from './../utils/autocomplete';
 
 import './../styles/selectionPage.scss';
 
-import coach from './../assets/images/coach.png';
+import sofa from './../assets/images/sofa.png';
 import { Context } from '..';
 import { observer } from 'mobx-react-lite';
 
@@ -59,7 +59,7 @@ const SelectionPage = observer(() => {
                     {furnitureOnView.map(item => {
                         return (
                         <div key={item.id} className='selection__items--item'>
-                            <img src={coach} alt="диван" />
+                            <img src={sofa} alt="диван" />
                             <p className='selection__items--name'>{item.name}</p>
                             <button onClick={() => select(item)} type='button' className='btn btn__blue btn__medium btn__white-active'>Выбрать</button>
                         </div>

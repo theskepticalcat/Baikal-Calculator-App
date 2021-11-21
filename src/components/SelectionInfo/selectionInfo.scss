@@ -27,7 +27,7 @@
         }
 
         @include breakpoint($tablet-bp) {
-            display: none;
+            margin: 10em 0;
         }
     }
 
@@ -122,8 +122,10 @@
         color: #B7B7B7;
     }
 
-
     @include breakpoint($tablet-bp) {
-        display: none;
+        margin-top: 5em;
+        margin-left: 10em;
+        margin-bottom: 5em;
+        width: 35em;
     }
 }

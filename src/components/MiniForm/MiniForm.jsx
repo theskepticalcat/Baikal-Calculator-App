@@ -48,9 +48,7 @@ const MiniForm = observer(() => {
 
         //---Выбор китайского города---:
         static showChineseResults(value) {
-            const selectChinaCity_title = selectChinaCity.firstChild;
             setChineseCity(value);
-            console.log(currentChineseCity);
             setPromptActive(false);
 
             if (selectChinaCity.classList.contains('error')) {
@@ -129,7 +127,8 @@ const MiniForm = observer(() => {
             const selectedOptions = {
                 from: currentChineseCity,
                 to: currentRussianCity,
-                currency: currentCurrency
+                currency: currentCurrency,
+                rate: currentRate
             }
             options.setOptions(selectedOptions);    //записываем в miniForm глобальное хранилище
 
@@ -171,12 +170,14 @@ const MiniForm = observer(() => {
 
                         <div className='form__item--select__content'>
                             {russianCities.russianCities.map(item => {
+                                if (item.name !== currentRussianCity) {
                                     return (
                                         <div onClick={() => DropDownMenu.onOptionRussian(item)} key={item.id} className='select-item'>
                                             <input className='select__input' type="radio"/>
                                             <p className='select__label'>{item.name}</p>
                                         </div>
                                     )
+                                }
                             })}
                        </div>
                     </div>
@@ -188,12 +189,14 @@ const MiniForm = observer(() => {
 
                        <div className='form__item--select__content'>
                             {currency.currency.map(item => {
-                                return (
-                                    <div onClick={() => DropDownMenu.onOptionCurrency(item)} key={item.id} className='select-item'>
-                                        <input className='select__input' type="radio"/>
-                                        <p className='select__label'>{item.name}</p>
-                                    </div>
-                                )
+                                if(item.name !== currentCurrency) {
+                                    return (
+                                        <div onClick={() => DropDownMenu.onOptionCurrency(item)} key={item.id} className='select-item'>
+                                            <input className='select__input' type="radio"/>
+                                            <p className='select__label'>{item.name}</p>
+                                        </div>
+                                    )
+                                }
                             })}
                        </div>
                     </div>
