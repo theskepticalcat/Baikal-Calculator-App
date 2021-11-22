@@ -234,6 +234,10 @@
         opacity: .8;
     }
 
+    .hidden {
+        display: none;
+    }
+
     @include breakpoint($tablet-bp) {
         display: none;
     }

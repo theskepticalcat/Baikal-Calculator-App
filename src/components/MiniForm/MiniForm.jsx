@@ -135,7 +135,6 @@ const MiniForm = observer(() => {
             //Rорректно ли заполнено поле:
             if(currentChineseCity === '' || !isCorrect) {
                 selectChinaCity.classList.add('error');
-                document.getElementById('valid-error').classList.remove('hidden');
             } else {
                 selectChinaCity.classList.remove('error');
 
@@ -211,8 +210,6 @@ const MiniForm = observer(() => {
 
                 <button onClick={DropDownMenu.onToSelect} type='submit' className='form__nextBtn'> Далее <img src={whiteArrow} alt='/'/></button>
             </div>
-            <div className='valid-error hidden' id='valid-error'><p>выберите город</p></div>
-
 
             <Prompt active={promptActive} setActive={setPromptActive}/>
         </div>

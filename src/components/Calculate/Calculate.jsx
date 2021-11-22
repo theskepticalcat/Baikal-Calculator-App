@@ -8,14 +8,14 @@ const Calculate = ({total}) => {
         <div className='calculate hidden' id='calculate'>
             <div className='calculate__details'>
                 <p>Стоимость доставки:</p>
-                <p>5 000 руб</p>
+                <p>{`${Math.ceil(5000 / selectItem.rate)} ${selectItem.currency}`}</p>
                 <p>Таможенные платежи:</p>
-                <p>500 руб</p>
+                <p>{`${Math.ceil(500 / selectItem.rate)} ${selectItem.currency}`}</p>
             </div>
             <div className='calculate__total'>
                 {total
                 ?
-                <p>Итого: {`${Math.ceil(total / selectItem.rate + 5000 + 500)} ${selectItem.currency}`}</p>
+                <p>Итого: {`${Math.ceil(total / selectItem.rate + Math.ceil(5000 / selectItem.rate) + Math.ceil(500 / selectItem.rate))} ${selectItem.currency}`}</p>
                 :
                 <p>Итого: {`${total} ${selectItem.currency}`}</p>
                 }
