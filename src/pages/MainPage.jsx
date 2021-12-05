@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
 
-import MiniForm from '../components/MiniForm/MiniForm';
+import MiniForm from '../components/MiniForm';
 
 import '../styles/mainPage.scss';
 

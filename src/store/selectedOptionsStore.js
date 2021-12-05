@@ -1,8 +1,12 @@
 import { makeAutoObservable } from "mobx";
 
-export default class MiniFormStore {
+export default class SelectedOptionsStore {
     constructor() {
-        this._selectedOptions = {};
+        this._selectedOptions = {
+            from: 'Пекин',
+            to: 'Москва',
+            currency: 'USD'
+        };
         makeAutoObservable(this);
     }
 

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Link, useLocation } from 'react-router-dom';
 import { Context } from '../..';
-import SendOptions from '../SendOptions/SendOptions';
+import SendOptions from '../SendOptions';
 
 import './header.scss';
 

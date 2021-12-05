@@ -7,7 +7,7 @@ import FurnitureStore from './store/furnitureStore';
 import CurrencyStore from './store/currencyStore';
 import RussianCitiesStore from './store/russianCitiesStore';
 import ChineseCitiesStore from './store/сhineseSitiesStore';
-import MiniFormStore from './store/miniFormStore';
+import SelectedOptionsStore from './store/selectedOptionsStore';
 
 export const Context = createContext(null);
 
@@ -17,7 +17,7 @@ ReactDOM.render(
     currency: new CurrencyStore(),
     russianCities: new RussianCitiesStore(),
     chineseCities: new ChineseCitiesStore(),
-    options: new MiniFormStore()
+    options: new SelectedOptionsStore()
   }}>
     <App />
   </Context.Provider>,
