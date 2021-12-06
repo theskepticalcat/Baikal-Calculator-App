@@ -1,7 +1,7 @@
 # Calculator
 https://chinesecalculator.herokuapp.com/main
 
-React (React Router)
+React (Next.js)
 
 MobX
 
@@ -9,14 +9,12 @@ MobX
 
 assets (картинки/иконки);
 
-components (компоненты со стилями; роутер);
+components (компоненты со стилями);
 
-pages (страницы);
+pages (страницы со стилями);
 
 store (глобальное хранилище);
 
-styles (стили страниц, переменные к ним и index.scss);
+styles (доп.стили);
 
 utils (вспомогательные функции и константы);
-
-routes.js (роуты);
