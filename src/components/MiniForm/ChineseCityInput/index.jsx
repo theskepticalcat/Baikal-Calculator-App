@@ -1,9 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Context } from '../../..';
+import { Context } from '../../../pages/_app';
 import autocomplete from '../../../utils/autocomplete';
 
-import './styles.scss';
+import { Item, 
+    ItemInput, 
+    Dropdown,
+    DropdownItem
+} from './styles';
 
 
 const ChineseCityInput = observer(() => {
@@ -31,25 +35,23 @@ const ChineseCityInput = observer(() => {
 
 
     return (
-        <div className='item'>
-            <input 
+        <Item>
+            <ItemInput 
                 value={currentChineseCity} 
                 onChange={e => showChineseResults(e.target.value)}
                 type='text'
-                className='item__title'
-            ></input>
+            ></ItemInput>
 
             {dropDown &&
-                <div className='dropdown'>
-                {list.map(item => 
-                    <div key={item.id} className='dropdown__item' onClick={() => onItem(item)}>
-                        <input type='radio' className='dropdown__input' id='city-name'></input>
-                        {item.name}
-                    </div>
-                )}
-                </div>
+                <Dropdown>
+                    {list.map(item => 
+                        <DropdownItem key={item.id} onClick={() => onItem(item)}>
+                            {item.name}
+                        </DropdownItem>
+                    )}
+                </Dropdown>
             }
-        </div>
+        </Item>
     );
 });
 

@@ -1,7 +1,13 @@
 import React, { useContext, useState} from 'react';
 import miniArrowImg from '../../../assets/images/smallArrowDown.svg';
-import { Context } from '../../..';
+import { Context } from '../../../pages/_app';
 import { observer } from 'mobx-react-lite';
+
+import { DropDown, 
+    Item, 
+    SelectedItem,
+    DropdownItem
+} from './styles';
 
 
 const RussianCity = observer(() => {
@@ -22,27 +28,26 @@ const RussianCity = observer(() => {
     }
 
     return (
-        <div onClick={() => onChangeItems()} className='item'>
-            <div>{currentRussianCity} <img src={miniArrowImg} alt='open'/></div>
+        <Item>
+            <SelectedItem>{currentRussianCity} <img src={miniArrowImg} alt='open'/></SelectedItem>
 
             {dropDown
                 ?
-                <div className='dropdown'>
+                <DropDown>
                     {russianCities.russianCities.map(item => {
                         if (item.name !== currentRussianCity) {
                             return (
-                                <div onClick={() => onOptionRussian(item)} key={item.id} className='dropdown__item'>
-                                    <input className='dropdown__input' type="radio"/>
-                                    <p className='dropdown__label'>{item.name}</p>
-                                </div>
+                                <DropdownItem onClick={() => onOptionRussian(item)} key={item.id}>
+                                    <p>{item.name}</p>
+                                </DropdownItem>
                             )
                         }
                     })}
-                </div>
+                </DropDown>
                 :
                 ''
             }
-        </div>
+        </Item>
     );
 });
 

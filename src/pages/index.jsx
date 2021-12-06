@@ -2,24 +2,28 @@ import React from 'react';
 import { observer } from 'mobx-react-lite';
 import MiniForm from '../components/MiniForm';
 
-import './styles.scss';
+import { Main, 
+    MiniformWrap, 
+    MiniformTitle, 
+    MiniformInscriptions 
+} from './styles';
 
 
-const MainPage = observer(() => {
+const Index = observer(() => {
     return (
-        <div className='main-page'>
-            <div className='main-page__mini-form'>
-                <p className='main-page__mini-form--title'>Рассчитайте<br></br>стоимость доставки из Китая</p>
-                <div className='main-page__mini-form--inscriptions'>
+        <Main>
+            <MiniformWrap>
+                <MiniformTitle>Рассчитайте<br></br>стоимость доставки из Китая</MiniformTitle>
+                <MiniformInscriptions>
                     <p>Откуда</p>
                     <p>Куда</p>
                     <p>Валюта</p>
                     <p>Курс</p>
-                </div>
+                </MiniformInscriptions>
                 <MiniForm/>
-            </div>
-        </div>
+            </MiniformWrap>
+        </Main>
     )
 })
 
-export default MainPage;
+export default Index;

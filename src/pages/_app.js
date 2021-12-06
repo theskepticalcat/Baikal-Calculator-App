@@ -1,13 +1,15 @@
 import React, {createContext} from 'react';
+import { GlobalStyles } from '../styles/globalStyles';
+import { Global, css } from '@emotion/react';
 import Head from 'next/head';
-import './../styles/global.scss';
+
+import Header from '../components/Header';
 
 import FurnitureStore from '../store/furnitureStore';
 import CurrencyStore from '../store/currencyStore';
 import RussianCitiesStore from '../store/russianCitiesStore';
 import ChineseCitiesStore from '../store/сhineseSitiesStore';
 import SelectedOptionsStore from '../store/selectedOptionsStore';
-import Header from '../components/Header';
 
 export const Context = createContext(null);
 
@@ -31,6 +33,7 @@ export default function MyApp({ Component, pageProps }) {
         chineseCities: new ChineseCitiesStore(),
         options: new SelectedOptionsStore()
       }}>
+        <Global styles={css`${GlobalStyles}`} />
         <Header />
         <Component {...pageProps} />
       </Context.Provider>

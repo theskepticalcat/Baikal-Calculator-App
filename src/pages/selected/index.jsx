@@ -1,27 +1,38 @@
-import React, { useContext } from 'react';
-import { Context } from '..';
+import React, { useContext, useState } from 'react';
+import { Context } from './../_app';
 import { observer } from 'mobx-react-lite';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/dist/client/router';
+import Image from 'next/image';
 
-import Calculate from '../../components/Calculate/Calculate';
+import Calculate from '../../components/Calculate';
 
-import closeImg from './../assets/images/red-close.svg';
-import sofaImg from './../assets/images/sofa.png';
-import removeImg from './../assets/images/red-big-delete.svg';
-import arrowDownImg from './../assets/images/blue-arrow-down.svg';
-import arrowRightImg from './../assets/images/blue-arrow-right.svg';
+import closeImg from './../../assets/images/red-close.svg';
+import sofaImg from './../../assets/images/sofa.png';
+import removeImg from './../../assets/images/red-big-delete.svg';
+import arrowDownImg from './../../assets/images/blue-arrow-down.svg';
+import arrowRightImg from './../../assets/images/blue-arrow-right.svg';
 
-import './styles.scss';
-import { useState } from 'react';
+import {SelectedBlock, 
+    SelectedHeader,
+    SelectedTitle, 
+    SelectedTip,
+    SelectedSpecifications,
+    SelectedItems, 
+    SelectedFooter, 
+    SelectedFooterBtns,
+    RemoveBtn,
+    AddBtn,
+    CalcBtn
+} from './styles';
 
 
 const Selected = observer(() => {
     const {furniture} = useContext(Context);
     
-    const history = useHistory();
+    const router = useRouter();
     const[total, setTotal] = useState('');
 
-    const selectItem = JSON.parse(localStorage.getItem('selectItem'));
+    //const selectItem = JSON.parse(localStorage.getItem('selectItem'));
 
 
     //Обработчики для подсказок:
@@ -60,23 +71,21 @@ const Selected = observer(() => {
 
 
     return (
-        <div className='selected'>
-            <header>
-                <div>
-                    <p className='selected__title'>
-                        Добавленная мебель
-                        <span className='selected__items-num'>{` (${furniture.selectedFurniture.length})`}</span>
-                    </p>
-                </div>
-                <div className='selected__tip selected__tip-edit'>
-                    <img onClick={hideTipEdit} src={closeImg} alt='close'/>
+        <SelectedBlock>
+            <SelectedHeader>
+                <SelectedTitle>
+                    Добавленная мебель
+                    <span className='selected__items-num'>{` (${furniture.selectedFurniture.length})`}</span>
+                </SelectedTitle>
+                <SelectedTip>
+                    <Image onClick={hideTipEdit} src={closeImg} alt='close'/>
                     <p>Чтобы отредактировать  введенные данные, просто нажмите на поле</p>
-                </div>
-            </header>
+                </SelectedTip>
+            </SelectedHeader>
 
 
             {/* Спецификации мебели */}
-            <table className='selected__specifications'>
+            <SelectedSpecifications>
                 <tr>
                     <th className='hidden'></th>
                     <th className='hidden'></th>
@@ -87,54 +96,54 @@ const Selected = observer(() => {
                     <th className='description-5 description'><p>Стоимость единицы</p></th>
                     <th className='description-6 description'><p>Удалить</p></th>
                 </tr>
-            </table>
+            </SelectedSpecifications>
 
 
             {/* Выбранные элементы мебели */}
-            <div className='selected-items'>
+            <SelectedItems>
                 {furniture.selectedFurniture.map(item => 
                     <table key={item.id}>
                         <tr>
-                            <td className='description-img'><img src={sofaImg} alt='img'/></td>
+                            <td className='description-img'><Image src={sofaImg} alt='img'/></td>
                             <td className='description-name'><p>{item.name}</p></td>
                             <td className='description-1 description'><p>{item.total}</p></td>
                             <td className='description-2 description'><p>23</p></td>
                             <td className='description-3 description'><p>26</p></td>
                             <td className='description-4 description'><p>2</p></td>
-                            <td className='description-5 description'><p>{`${Math.ceil(item.price/selectItem.rate)} ${selectItem.currency}`}</p></td>
+                            {/* <td className='description-5 description'><p>{`${Math.ceil(item.price/selectItem.rate)} ${selectItem.currency}`}</p></td> */}
                             <td className='description-6 description'>
-                                <button onClick={() => removeItem(item)} className='selected-items--remove' type='button'><img src={removeImg} alt='remove'/></button>
+                                <RemoveBtn onClick={() => removeItem(item)} type='button'><Image src={removeImg} alt='remove'/></RemoveBtn>
                             </td>
                         </tr>
                     </table>
                 )}
-            </div>
+            </SelectedItems>
 
 
 
             {/* Кнопки и подсказки к ним */}
-            <div className='selected__footer'>
-                <div className='selected__tip selected__tip-calculate'>
-                    <img onClick={hideTipCalculate} src={closeImg} alt='close'/>
+            <SelectedFooter>
+                <SelectedTip>
+                    <Image onClick={hideTipCalculate} src={closeImg} alt='close'/>
                     <p>Узнайте стоимость доставки, нажав на кнопку “Рассчитать”</p>
-                    <img src={arrowDownImg} alt='/'/>
-                </div>
+                    <Image src={arrowDownImg} alt='/'/>
+                </SelectedTip>
 
-                <div className='selected__footer-btns'>
-                    <div className='selected__tip selected__tip-add'>
-                        <img onClick={hideTipAdd} src={closeImg} alt='close'/>
+                <SelectedFooterBtns>
+                    <SelectedTip>
+                        <Image onClick={hideTipAdd} src={closeImg} alt='close'/>
                         <p>Через кнопку “Добавить” Вы можете добавлять еще элементы</p>
-                        <img src={arrowRightImg} alt='/'/>
-                    </div>
+                        <Image src={arrowRightImg} alt='/'/>
+                    </SelectedTip>
 
-                    <button onClick={() => history.push('/select')} type='submit' className='btn btn__blue btn__submit'>Добавить</button>
-                    <button onClick={calculation} type='submit' className='btn btn__blue btn__submit'>Рассчитать</button>
-                </div>
-            </div>
+                    <AddBtn onClick={() => router.push('/select')} type='submit'>Добавить</AddBtn>
+                    <CalcBtn onClick={calculation} type='submit'>Рассчитать</CalcBtn>
+                </SelectedFooterBtns>
+            </SelectedFooter>
 
 
             <Calculate total={total}/>
-        </div>
+        </SelectedBlock>
     )
 })
 

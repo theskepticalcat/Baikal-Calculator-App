@@ -1,9 +1,15 @@
 import { observer } from 'mobx-react-lite';
 import React, { useState, useContext } from 'react';
-import { Context } from '../../..';
+import { Context } from '../../../pages/_app';
 
 import miniArrowImg from '../../../assets/images/smallArrowDown.svg';
-import './styles.scss';
+
+import {Item, 
+    DropDownMenu,
+    DropDownItem, 
+    SelectedItem
+} from './styles';
+
 
 const Currency = observer(() => {
     const{currency} = useContext(Context);
@@ -23,27 +29,26 @@ const Currency = observer(() => {
 
 
     return (
-        <div onClick={() => onChangeItems()} className='item'>
-            <div>{currentCurrency} <img src={miniArrowImg} alt='open'/></div>
+        <Item onClick={() => onChangeItems()}>
+            <SelectedItem>{currentCurrency} <img src={miniArrowImg} alt='open'/></SelectedItem>
 
             {dropDown === true
                 ?
-                <div className='dropdown'>
+                <DropDownMenu>
                     {currency.currency.map(item => {
                         if(item.name !== currentCurrency) {
                             return (
-                                <div onClick={() => onOptionCurrency(item)} key={item.id} className='dropdown__item'>
-                                <input className='dropdown__input' type="radio"/>
-                                    <p className='dropdown__label'>{item.name}</p>
-                                </div>
+                                <DropDownItem onClick={() => onOptionCurrency(item)} key={item.id}>
+                                    <p>{item.name}</p>
+                                </DropDownItem>
                             )
                         }
                     })}
-                </div>
+                </DropDownMenu>
                 :
                 ''
             }
-        </div>
+        </Item>
     );
 });
 

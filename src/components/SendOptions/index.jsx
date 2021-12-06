@@ -1,10 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { Context } from '../../pages/_app';
-
-import './styles.scss';
+import Image from 'next/image';
 
 import arrowRightSvg from './../../assets/images/arrow-right-grey.svg';
 import penSvg from './../../assets/images/pen.svg';
+
+import { Options, 
+    OptionsPen 
+} from './styles';
+
 
 const SendOptions = () => {
     const {options} = useContext(Context);
@@ -17,14 +21,14 @@ const SendOptions = () => {
     }
 
     return (
-         <div onClick={onActive} className='options' id='options'>
-            <p>{options.selectedOptions.from}</p>
-            <div><img src={arrowRightSvg} alt="/" /></div>
-            <p>{`${options.selectedOptions.to}, `}</p>
-            <p>{options.selectedOptions.currency}</p>
+        <Options onClick={onActive} id='options'>
+            {/* <p>{selectedOptions.from}</p> */}
+            <Image src={arrowRightSvg} alt="/"/>
+            {/* <p>{`${selectedOptions.to}, `}</p>
+            <p>{selectedOptions.currency}</p> */}
 
-            {active === true && <div className='options__pen'><img src={penSvg} alt='change'/></div>}
-        </div>
+            {active === true && <OptionsPen><img src={penSvg} alt='change'/></OptionsPen>}
+        </Options>
     )
 }
 

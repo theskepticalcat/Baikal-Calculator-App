@@ -1,13 +1,25 @@
 import React, { useContext, useState } from 'react';
-import { Context } from '..';
+import { Context } from '../_app';
 import { observer } from 'mobx-react-lite';
+import Image from 'next/image';
 
-import SelectionInfo from '../../components/SelectionInfo/SelectionInfo';
+import SelectionInfo from '../../components/SelectionInfo';
 import autocomplete from '../../utils/autocomplete';
 
-import sofa from './../assets/images/sofa.png';
-import './styles.scss';
+import sofa from '../../assets/images/sofa.png';
 
+import { SelectionHeader, 
+    SelectionHeaderTitle, 
+    Selection, 
+    SelectionWrap, 
+    SelectionSearch, 
+    SearchBtn,
+    SelectionInput, 
+    SelectionItems, 
+    SelectionItem, 
+    SelectionItemName, 
+    SelectBtn
+} from './styles';
 
 
 const SelectionPage = observer(() => {
@@ -28,7 +40,6 @@ const SelectionPage = observer(() => {
     //---Выдача по поиску---:
     function itemsSearch(value) {
         setOnInputValue(value);     //в стейт инпута
-
         const newArr = autocomplete(value, furnitureOnView);
         setFurnitureOnView(newArr);     //обновляем данные в стейт выдачи айтемов
 
@@ -40,37 +51,37 @@ const SelectionPage = observer(() => {
 
     
     return (
-        <div>
-        <div className='selection__header'>
-            <p>Выберите мебель, которую нужно<br></br>перевезти:</p>
-            <p>Затем заполните следующие<br></br>поля выбранного элемента:</p>
-        </div>
-        
-        <div className='selection'>
-            <div className='selection__wrap'>
-                <form className='selection__search'>
-                    <input onChange={e => itemsSearch(e.currentTarget.value)} value={onInputValue} className='selection__search--input' placeholder='Введите название' type='text'></input>
-                    <button className='btn btn__search btn__blue' type='submit'>Поиск</button>
-                </form>
+        <>
+            <SelectionHeader>
+                <SelectionHeaderTitle>Выберите мебель, которую нужно<br></br>перевезти:</SelectionHeaderTitle>
+                <SelectionHeaderTitle>Затем заполните следующие<br></br>поля выбранного элемента:</SelectionHeaderTitle>
+            </SelectionHeader>
+            
+            <Selection>
+                <SelectionWrap>
+                    <SelectionSearch>
+                        <SelectionInput onChange={e => itemsSearch(e.currentTarget.value)} value={onInputValue} placeholder='Введите название' type='text'></SelectionInput>
+                        <SearchBtn type='submit'>Поиск</SearchBtn>
+                    </SelectionSearch>
 
-                {/* Вывод всей мебели */}
-                <div className='selection__items'>
-                    {furnitureOnView.map(item => {
-                        return (
-                        <div key={item.id} className='selection__items--item'>
-                            <img src={sofa} alt="диван" />
-                            <p className='selection__items--name'>{item.name}</p>
-                            <button onClick={() => select(item)} type='button' className='btn btn__blue btn__medium btn__white-active'>Выбрать</button>
-                        </div>
-                        )
-                    })}
-                </div>
-            </div>
+                    {/* Вывод всей мебели */}
+                    <SelectionItems>
+                        {furnitureOnView.map(item => {
+                            return (
+                            <SelectionItem key={item.id}>
+                                <Image src={sofa} alt="диван" />
+                                <SelectionItemName>{item.name}</SelectionItemName>
+                                <SelectBtn onClick={() => select(item)} type='button'>Выбрать</SelectBtn>
+                            </SelectionItem>
+                            )
+                        })}
+                    </SelectionItems>
+                </SelectionWrap>
 
-            {/* Информация о выбранном элементе мебели */}
-            <SelectionInfo selectedItem={selectedItem}/>
-        </div>
-        </div>
+                {/* Информация о выбранном элементе мебели */}
+                <SelectionInfo selectedItem={selectedItem}/>
+            </Selection>
+        </>
     )
 })
 
