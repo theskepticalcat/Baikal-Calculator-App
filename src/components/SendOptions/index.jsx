@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Context } from '../..';
+import { Context } from '../../pages/_app';
 
 import './styles.scss';
 

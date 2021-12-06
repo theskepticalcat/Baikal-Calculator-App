@@ -76,24 +76,34 @@ export default class FurnitureStore {
                 total: 0
             }
         ];
+        this._selectedItem = {};
         this._selectedFurniture = [];
         makeAutoObservable(this);
     }
 
-    get furniture() {
+
+    get furniture() {   //получение всей мебели
         return this._furniture;
     }
 
 
-    setSelectedFurniture(furniture) {   //добавление нового об-кта с мебелью
+    setSelectedItem(item) {
+        this._selectedItem = item;
+    }
+    get selectedItem () {
+        return this._selectedItem;
+    }
+
+
+    setSelectedFurniture(furniture) {   //добавление нового об-кта с мебелью в список
         furniture.total = furniture.total + 1;  //увеличиваем количество на 1
         this._selectedFurniture.push(furniture);
     }
-
     get selectedFurniture() {
         var unique = Array.from(new Set(this._selectedFurniture.map(JSON.stringify))).map(JSON.parse);
         return unique;
     }
+
 
     resetSelected(arr) {    //экшен обновления списка выбранной мебели при удалении элемента
         this._selectedFurniture = arr;

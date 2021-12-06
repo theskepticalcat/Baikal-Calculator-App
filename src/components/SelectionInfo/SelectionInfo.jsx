@@ -1,20 +1,20 @@
 import React, { useContext, useState } from 'react';
 import { observer } from 'mobx-react-lite';
-
-import './selectionInfo.scss';
+import { Context } from '../..';
+import Link from 'next/link';
 
 import selectedItemImg from './../../assets/images/sofa.png';
 import add from './../../assets/images/blue-add.svg';
 import reduce from './../../assets/images/blue-reduce.svg';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-import { Context } from '../..';
+
+import './selectionInfo.scss';
 
 
 
 const SelectionInfo = observer(({selectedItem}) => {    //передали пропсом выбранный айтем из SelectionPage.jsx
     const {furniture} = useContext(Context);
     const [total, setTotal] = useState(1);
-    const selectItem = JSON.parse(localStorage.getItem('selectItem'));
+    const selectedItem = furniture.selectedItem;
 
 
     //Увеличение и уменьшение количества штук:
@@ -68,7 +68,7 @@ const SelectionInfo = observer(({selectedItem}) => {    //передали пр�
 
                 <form>
                     <button className='btn btn__blue btn__submit'>Сбросить</button>
-                    <Link to="/selected">
+                    <Link href="/selected">
                         <button onClick={addSelectedItem} className='btn btn__blue btn__submit'>Добавить</button>
                     </Link>
                 </form>
