@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Context } from '../../pages/_app';
+import { observer } from 'mobx-react-lite';
 import Image from 'next/image';
 
 import arrowRightSvg from './../../assets/images/arrow-right-grey.svg';
@@ -10,7 +11,7 @@ import { Options,
 } from './styles';
 
 
-const SendOptions = () => {
+const SendOptions = observer(() => {
     const {options} = useContext(Context);
     const [active, setActive] = useState(false);
 
@@ -22,14 +23,14 @@ const SendOptions = () => {
 
     return (
         <Options onClick={onActive} id='options'>
-            {/* <p>{selectedOptions.from}</p> */}
+            <p>{options.selectedOptions.from}</p>
             <Image src={arrowRightSvg} alt="/"/>
-            {/* <p>{`${selectedOptions.to}, `}</p>
-            <p>{selectedOptions.currency}</p> */}
+            <p>{`${options.selectedOptions.to}, `}</p>
+            <p>{options.selectedOptions.currency}</p>
 
             {active === true && <OptionsPen><img src={penSvg} alt='change'/></OptionsPen>}
         </Options>
     )
-}
+});
 
 export default SendOptions;

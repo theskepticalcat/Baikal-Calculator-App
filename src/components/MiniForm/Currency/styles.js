@@ -20,9 +20,13 @@ export const Item = styled.div`
     font-weight: 500;
     color: ${colors.grey};
 
+    p {
+        margin-right: .5em;
+    }
+
     img {
         opacity: .5;
-        margin-left: 0.5em;
+        max-width: 5px;
     }
 
     @media screen and (max-width: ${screen.tablet}) {
@@ -32,10 +36,6 @@ export const Item = styled.div`
         top: 60px;
     }
 
-    :hover {
-        background-color: rgba(248, 248, 248, 0.521);
-    }
-
     @media screen and (max-width: ${screen.tablet}) {
         padding: 47px auto;
         border: none;
@@ -43,25 +43,6 @@ export const Item = styled.div`
 
         width: 162px;
         height: 49px;
-    }
-`;
-
-export const SelectedItem = styled.input`
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    padding: 8px 16px;
-
-    cursor: pointer;
-
-    font-family: 'Roboto';
-    font-size: 1em;
-    font-weight: 500;
-    color: ${colors.grey};
-
-    @media screen and (max-width: ${screen.tablet}) {
-        text-align: center;
     }
 `;
 
@@ -91,6 +72,25 @@ export const DropDownMenu = styled.div`
     cursor: pointer;
 `;
 
+export const SelectedItem = styled.div`
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 8px 16px;
+
+    cursor: pointer;
+
+    font-family: 'Roboto';
+    font-size: 1em;
+    font-weight: 500;
+    color: ${colors.grey};
+
+    @media screen and (max-width: ${screen.tablet}) {
+        text-align: center;
+    }
+`;
+
 
 export const DropDownItem = styled.div`
     display: flex;
@@ -106,5 +106,9 @@ export const DropDownItem = styled.div`
         display: flex;
         align-items: center;
         transition: all 0.2s ease-out;
+    }
+
+    :hover {
+        background-color: rgba(248, 248, 248, 0.521);
     }
 `;

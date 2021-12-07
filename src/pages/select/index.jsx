@@ -26,11 +26,11 @@ const SelectionPage = observer(() => {
     const {furniture} = useContext(Context);
     const [selectedItem, setSelectedItem] = useState('');  //объект выбранного айтема
     const [onInputValue, setOnInputValue] = useState('');  //стейт инпута
-    const[furnitureOnView, setFurnitureOnView] = useState(furniture.furniture); //стейт выдачи айтемов по поиску
+    const [furnitureOnView, setFurnitureOnView] = useState(furniture.furniture); //стейт выдачи айтемов по поиску
 
 
     const select = (item) => {
-        setSelectedItem(item);      //добавляем выбранный айтем в стейт для отображения
+        setSelectedItem(item);
         setFurnitureOnView(furniture.furniture);
         setOnInputValue('');
         furniture.setSelectedItem(item);    //в глобальное хранилище
@@ -60,8 +60,12 @@ const SelectionPage = observer(() => {
             <Selection>
                 <SelectionWrap>
                     <SelectionSearch>
-                        <SelectionInput onChange={e => itemsSearch(e.currentTarget.value)} value={onInputValue} placeholder='Введите название' type='text'></SelectionInput>
-                        <SearchBtn type='submit'>Поиск</SearchBtn>
+                        <SelectionInput 
+                            onChange={e => itemsSearch(e.currentTarget.value)} 
+                            value={onInputValue} 
+                            placeholder='Введите название' 
+                            type='text'>
+                        </SelectionInput>
                     </SelectionSearch>
 
                     {/* Вывод всей мебели */}

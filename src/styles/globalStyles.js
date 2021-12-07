@@ -40,6 +40,7 @@ export const GlobalStyles = `
 
     a {
         text-decoration: none;
+        cursor: pointer;
     }
 
     p {
@@ -60,6 +61,15 @@ export const GlobalStyles = `
         box-shadow: 0px 4px 40px 0 #2e50571a;
         outline: none;
         margin: 0;
+
+        font-weight: 600;
+        font-size: 1.1rem;
+        font-family: 'Open Sans';
+        cursor: pointer;
+
+        @media screen and (max-width: ${screen.desktop}) {
+            font-size: 1rem;
+        }
     }
 
     input {
@@ -82,20 +92,5 @@ export const GlobalStyles = `
         list-style-type: none;
         padding: 0;
         margin: 0;
-    }
-
-    .hidden {
-        display: none;
-    }
-
-    .button {
-        font-weight: 600;
-        font-size: 1.1rem;
-        font-family: 'Open Sans';
-        cursor: pointer;
-
-        @media screen and (max-width: ${screen.desktop}) {
-            font-size: 1rem;
-        }
     }
 `;

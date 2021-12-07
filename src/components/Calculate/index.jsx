@@ -1,5 +1,4 @@
 import React from 'react';
-import './styles.js';
 
 import {CalculateBlock, 
     CalculateDetails, 
@@ -13,7 +12,7 @@ const Calculate = ({total}) => {
     //const selectItem = JSON.parse(localStorage.getItem('selectItem'));
     
     return (
-        <CalculateBlock hidden={true} id='calculate'>
+        <CalculateBlock hidden={true}>
             <CalculateDetails>
                 <p>Стоимость доставки:</p>
                 {/* <p>{`${Math.ceil(5000 / selectItem.rate)} ${selectItem.currency}`}</p> */}

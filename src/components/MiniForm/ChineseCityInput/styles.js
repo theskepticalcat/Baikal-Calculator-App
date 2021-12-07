@@ -81,10 +81,6 @@ export const Dropdown = styled.div`
     @media screen and (min-width: ${screen.desktop}) {
         top: 60px;
     }
-
-    :hover {
-        background-color: rgba(248, 248, 248, 0.521);
-    }
 `;
 
 
@@ -97,4 +93,8 @@ export const DropdownItem = styled.div`
 
     cursor: pointer;
     border-top: 1px solid #DEDEDE;
+
+    :hover {
+        background-color: rgba(248, 248, 248, 0.521);
+    }
 `;

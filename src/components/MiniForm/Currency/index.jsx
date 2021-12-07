@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React, { useState, useContext } from 'react';
 import { Context } from '../../../pages/_app';
+import Image from 'next/image';
 
 import miniArrowImg from '../../../assets/images/smallArrowDown.svg';
 
@@ -30,7 +31,7 @@ const Currency = observer(() => {
 
     return (
         <Item onClick={() => onChangeItems()}>
-            <SelectedItem>{currentCurrency} <img src={miniArrowImg} alt='open'/></SelectedItem>
+            <SelectedItem><p>{currentCurrency}</p> <Image src={miniArrowImg} alt='open'/></SelectedItem>
 
             {dropDown === true
                 ?

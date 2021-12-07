@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 import Prompt from '../Prompt';
 import ChineseCityInput from './ChineseCityInput';
@@ -19,8 +20,7 @@ import {FormContainer,
 
 const MiniForm = observer(() => {
     const [promptActive, setPromptActive] = useState(false);    //состояние подсказки
-    const history = useHistory();
-
+    const router = useRouter();
 
     //Появление подсказки:
     useEffect(() => {
@@ -34,7 +34,7 @@ const MiniForm = observer(() => {
     //---Собираем выбранные данные, валидация и переход далее---:
     function onToSelect() {
         //записываем в miniForm глобальное хранилище
-        history.push('/select');
+        router.push('/select');
     }
 
 
@@ -48,7 +48,7 @@ const MiniForm = observer(() => {
                     <Rate />
                 </Form>
 
-                <NextBtn onClick={onToSelect} type='submit'> Далее <img src={whiteArrow} alt='/'/></NextBtn>
+                <NextBtn onClick={onToSelect} type='submit'> Далее <Image src={whiteArrow} alt='/'/></NextBtn>
             </FormContainer>
 
             <Prompt active={promptActive} setActive={setPromptActive}/>

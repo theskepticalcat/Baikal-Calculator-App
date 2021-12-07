@@ -1,6 +1,5 @@
 import { colors, screen } from './../styles/vars';
 import styled from "@emotion/styled";
-import background from './../assets/images/Background.png';
 
 
 export const Main = styled.section`

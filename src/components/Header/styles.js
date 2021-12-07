@@ -23,6 +23,10 @@ export const HeaderBlock = styled.header`
 export const LogoAndOptionsWrap = styled.div`
     display: flex;
     align-items: center;
+
+    img {
+        cursor: pointer
+    }
 `;
     
 

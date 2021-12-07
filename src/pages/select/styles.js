@@ -73,6 +73,10 @@ export const SelectionSearch = styled.form`
     display: flex;
     align-items: center;
     margin-top: 2em;
+
+    @media screen and (max-width: ${screen.tablet}) {
+        margin-top: 10em;
+    }
 `;
 
 export const SelectionInput = styled.input`
@@ -80,6 +84,10 @@ export const SelectionInput = styled.input`
     height: 4em;
     margin-right: 8px;
     padding-left: 15px;
+
+    ::placeholder{
+        color: grey;
+    }
 `;
 
 export const SelectionItems = styled.div`
@@ -140,27 +148,6 @@ export const SelectBtn = styled.button`
     :active {
         background-color: white;
         color: #606F7A;
-    }
-
-    &:hover {
-        background-color: ${colors.darkBlue};
-    }
-
-    &:disabled {
-        background-color: ${colors.lightBlue};
-    }
-`;
-
-export const SearchBtn = styled.button`
-    background-color: ${colors.blue};
-    color: white;
-    margin: 0 9px 0 0;
-    
-    width: 8.1em;
-    height: 3.3em;
-
-    @media screen and (max-width: ${screen.tablet}) {
-        display: none;
     }
 
     &:hover {

@@ -2,6 +2,7 @@ import React, { useContext, useState} from 'react';
 import miniArrowImg from '../../../assets/images/smallArrowDown.svg';
 import { Context } from '../../../pages/_app';
 import { observer } from 'mobx-react-lite';
+import Image from 'next/image';
 
 import { DropDown, 
     Item, 
@@ -28,8 +29,8 @@ const RussianCity = observer(() => {
     }
 
     return (
-        <Item>
-            <SelectedItem>{currentRussianCity} <img src={miniArrowImg} alt='open'/></SelectedItem>
+        <Item onClick={() => onChangeItems()}>
+            <SelectedItem><p>{currentRussianCity}</p> <Image src={miniArrowImg} alt='open'/></SelectedItem>
 
             {dropDown
                 ?

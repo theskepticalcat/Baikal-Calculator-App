@@ -21,10 +21,13 @@ export const Item = styled.div`
     font-weight: 500;
     color: ${colors.grey};
 
+    p {
+        margin-right: .5em;
+    }
 
     img {
         opacity: .5;
-        margin-left: 0.5em;
+        max-width: 5px;
     }
 
     @media screen and (max-width: ${screen.tablet}) {
@@ -37,7 +40,7 @@ export const Item = styled.div`
     }
 `;
 
-export const SelectedItem = styled.input`
+export const SelectedItem = styled.div`
     display: flex;
     align-items: center;
     width: 100%;
@@ -87,10 +90,6 @@ export const DropDown = styled.div`
     @media screen and (min-width: ${screen.desktop}) {
         top: 60px;
     }
-
-    :hover {
-        background-color: rgba(248, 248, 248, 0.521);
-    }
 `;
 
 
@@ -109,5 +108,9 @@ export const DropdownItem = styled.div`
         align-items: center;
         
         transition: all 0.2s ease-out;
+    }
+
+    :hover {
+        background-color: rgba(248, 248, 248, 0.521);
     }
 `;
