@@ -16,7 +16,6 @@ const ChineseCityInput = observer(() => {
     const [currentChineseCity, setChineseCity] = useState('');
     const [dropDown, setDropDown] = useState(false);
     const [list, setList] = useState(null);
-    //const [isCorrect, setCorrect] = useState(false);     //стейт ошибки-напоминания
 
 
     //Показываем результаты:
@@ -31,6 +30,7 @@ const ChineseCityInput = observer(() => {
     function onItem(item) {
         setChineseCity(item.name);
         setDropDown(false);
+        chineseCities.setIsSelected(true);  //помечаем в стор,что айтем выбран
     }
 
 

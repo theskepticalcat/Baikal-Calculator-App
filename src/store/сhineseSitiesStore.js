@@ -48,9 +48,17 @@ export default class ChineseCitiesStore {
                 name: "Путьянь"
             }
         ]
-
+        this._isSelected = false;
         this._selectedChineseCity = {};
         makeAutoObservable(this);
+    }
+
+
+    setIsSelected(bool) {
+        this._isSelected = bool;
+    }
+    get isSelected() {
+        return this._isSelected;
     }
 
     

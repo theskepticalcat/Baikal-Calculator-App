@@ -30,15 +30,14 @@ export const SelectedBlock = styled.section`
     }
 `;
 
-export const SelectedHeader = styled.header`
-    display: flex;
+
+const Calculate = `
+    align-self: end;
+    margin-right: .9em;
 `;
-
-
-export const SelectedTitle = styled.div`
-    font-size: 3rem;
-    font-weight: 400;
-    margin-right: 1.5em;
+const Add =`
+    margin-bottom: 0;
+    margin: 0 1em 0 6.9em;
 `;
 
 
@@ -47,7 +46,7 @@ export const SelectedTip = styled.div`
     align-items: center;
     justify-content: flex-start;
 
-    max-width: 45em;
+    max-width: 40em;
     height: 3.9em;
 
     background-color: white;
@@ -55,63 +54,12 @@ export const SelectedTip = styled.div`
     box-shadow: rgba(93, 170, 255, 0.1);
     transition: 0.2s visibility;
     margin-bottom: 1em;
+    padding: 0.5em 1em;
     cursor: pointer;
-
-    &-calculate {
-        align-self: end;
-        margin-right: .9em;
-    }
-
-    &-add {
-        margin-bottom: 0;
-        margin: 0 1em 0 6.9em;
-    }
 
     p {
         color: #5DAAFF;
-        margin-right: 1em;
-    }
-
-    img {
-        padding: 1.7em;
-    }
-
-    &-hidden {
-        visibility: hidden;
-    }
-`;
-
-export const SelectedSpecifications = styled.table`
-    align-self: flex-end;
-    min-width: 61.8em;
-    height: 5.7em;
-
-    background-color:#F8FAFF;
-    border: 1px solid #E2E4EA;
-    border-radius: 5px;
-    margin: 16px 0 10px 17.8em;
-
-    :not(:last-of-type) {
-        border-right: 1px solid #E2E4EA;
-    }
-
-    .description-1 {
-        width: 7.3em;
-    }
-    .description-2 {
-        width: 11.2em;
-    }
-    .description-3 {
-        width: 11em;
-    }
-    .description-4 {
-        width: 9.7em;
-    }
-    .description-5 {
-        width: 11.1em;
-    }
-    .description-6 {
-        width: 9.1em;
+        margin: auto 1em;
     }
 `;
 

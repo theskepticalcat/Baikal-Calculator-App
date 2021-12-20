@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
+import { Context } from '../../pages/_app';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
@@ -13,13 +14,16 @@ import whiteArrow from '../../assets/images/white-arrow-right.svg';
 
 import {FormContainer, 
     Form, 
+    Error,
     NextBtn
 } from './styles.js';
 
 
 
 const MiniForm = observer(() => {
+    const {chineseCities} = useContext(Context);
     const [promptActive, setPromptActive] = useState(false);    //состояние подсказки
+    const [showError, setShowError] = useState(false);
     const router = useRouter();
 
     //Появление подсказки:
@@ -33,8 +37,13 @@ const MiniForm = observer(() => {
 
     //---Собираем выбранные данные, валидация и переход далее---:
     function onToSelect() {
-        //записываем в miniForm глобальное хранилище
-        router.push('/select');
+        chineseCities.isSelected === false
+        ?
+        setShowError(true)
+        :
+        setShowError(false);
+
+        //router.push('/select');
     }
 
 
@@ -50,6 +59,12 @@ const MiniForm = observer(() => {
 
                 <NextBtn onClick={onToSelect} type='submit'> Далее <Image src={whiteArrow} alt='/'/></NextBtn>
             </FormContainer>
+            {showError === true 
+            ? 
+            <Error>выберите город</Error>
+            :
+            ''
+            }
 
             <Prompt active={promptActive} setActive={setPromptActive}/>
         </>

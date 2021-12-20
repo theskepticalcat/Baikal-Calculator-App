@@ -31,6 +31,11 @@ export const Form = styled.form`
     }
 `;
 
+export const Error = styled.p`
+    color: red;
+    margin: .5em auto auto 1.5em;
+`;
+
 export const NextBtn = styled.button`
     margin-left: 1em;
     display: flex;
