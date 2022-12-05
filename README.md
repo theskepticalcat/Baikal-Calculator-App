@@ -1,4 +1,4 @@
-# Calculator
+# Baikal Calculator App
 https://chinesecalculator.herokuapp.com/main
 
 React (Next.js)
